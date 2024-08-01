@@ -1,10 +1,10 @@
-#include "EggCartons/EggCartons.hpp"
+#include "BlackAndRed/BlackAndRed.hpp"
 
 #include <iostream>
 
 int main(void){
-    EggCartons carton; 
-    std::cout << carton.minCartons(84) << std::endl;
+    BlackAndRed b;
+    std::cout << b.cut("BBBRRRRB") << std::endl;
 
     return 0;
 }
