@@ -1,0 +1,14 @@
+PROBLEM #1 
+Egg Cartons 
+
+This problem sounds similar to one of the problems covered in the lectures where someone 
+wanted to buy lottery tickets with no change. Just from observation we can see that if n is an odd 
+number, it is impossible and we will return -1. Also from observation, if n>10 and an even number, 
+it is always possible to form some combination. 
+One approach to finding the number of 6-packs and 8-packs would be to first
+    - check if n is even 
+    - check if n = 6 or 8 
+    - check that n > 10 
+    - check if n is a multiple of 6 or 8 
+    - keep subtracting 8 from n until it is a multiple of 6 then return the number 
+      of times we subtracted 8 + the result/6. 
