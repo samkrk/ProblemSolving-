@@ -1,0 +1,101 @@
+PROBLEM #1
+Inchworm Problem 
+
+So we need to check if the inchworm moves onto a leaf.
+The leaves are located at n*(leaf_distance), where n>=0 and n<=(branch_length)/(leaf_distance).
+The inchworm moves to k*(distance), where k>=0 and k <=(branch_length)/(distance)
+So here we need to find the number of values of k and n that match, given their 
+boundaries. 
+
+After a lot of testing and failing, I'm going to try a slightly different approach. 
+If we can find the smallest common denominator between the rest distance and leaf distance, 
+we can then easily calculate how many times the worm will eat a leaf. 
+So once the lowest common denominator is found, just calculate how many times the LCM fits into the 
+branch. 
+
+This second approach was much easier that my original idea. The first idea was not so elegant, and I 
+used confusing names for my variables, like n and k, which kept confusing me. 
+This was the first problem of the semester however, so I think I was a bit rusty. 
+
+
+PROBLEM #2
+Throw The Ball 
+
+So for this problem I think I will create a vector of integers, called players, which represents the 
+number of times a player has been passed a ball. Here, each index of the vector represents a player, 
+so index 0 represents players 1 count, index 1 represents player 2's count and so on. 
+From here, we know where the next index will be, using "L" along with the modulus operator, to ensure 
+we pass to a player within a valid range. 
+
+I assume we can use a while loop to keep passing the ball until the player with the ball reaches 
+the value "M". Also each time the ball is thrown we will update the result which we will eventually return.
+
+While implementing this approach I had some issues with the modulus operator (%). I think now it's better practice 
+to implement the operator like this: (pass_index - L + N)%N, instead of (pass_index- L)%N. 
+
+I implemented this problem pretty much exactly how I planned which was good. Had some issues with the modulus 
+operator due to not quite remembering how to use it, but I now feel more confident in my ability to use it effectively. 
+
+
+PROBLEM #3 
+Aziumuth Monitoring 
+
+So this problem seems pretty straight forward. Just split the vector of strings up into a direction vector and 
+a magnitude vector. If the direction is "RIGHT", add the magnitude (90 if there is no magnitude), and if the direction 
+is "LEFT", subtract the magnitude (90 if there is no magnitude). 
+Although now that I read the instruction set again, if the instruction is "TURN AROUND", then this method may not work
+since "AROUND" is not an integer magnitude but is actually a string. 
+Could potentially loop through the instruction vector and change it to an easy to work with form, 
+so change "RIGHT" to "RIGHT 90", "TURN AROUND" to "RIGHT 180" and "LEFT" to "LEFT 90". 
+Also if the direction is "HALT", return the final sum of directions. 
+
+So on second thought, I wasn't sure how to actually tidy up the input string, so I ended up just looping through the 
+original input array, and checking for HALT, RIGHT, LEFT and TURN AROUND exact matches first since they were straight forward. 
+Then for RIGHT X or LEFT X, I used the substr method to extract the magnitude and then convert it from a string to an int using 
+std::stoi. Finally, I had to normalise the direction so it was between 0 and 360 degrees. 
+
+This question helped me get some experience using the substr method and the string to integer (stoi) method also. 
+I haven't really used these before, so coding questions such as these with strings as inputs that need to be extracted 
+were always challenging. Hopefully now I can re-use these methods in future problems. 
+
+PROBLEM #4
+Street Parking 
+
+So here we could create a vector of zeros and ones which indicate if a car can park on that spot or not. 
+As for bus stops, you cannot park on the index of the bus stop, call this i, or i-1 or i-2. 
+For drive ways you cannot park on index i. 
+For side streets, you cannot park on index i, i+1, or i-1. 
+So loop through the input array, depending on the value, D, B or S, update index and surrounding 
+indexes in the vector of zeros and ones, with zeros indicating you can park there. 
+Once everything has been updated, calculate and return the number of zeros in the vector (available parks).
+
+I managed to get this question correct and pass all the test cases on the first go which was nice. In some of the 
+previous questions I kept on getting "out of vector range" warnings, by trying to access elements outside of the vector. 
+So for this question when I see that I'm going to be accessing elements at i-1,i-2 and i+1, I remembered 
+my issues from previous questions and made sure to check that accessing these elements would not go outside 
+the array bounds. 
+
+#PROBLEM #5
+Downloading Files 
+
+This problem doesn't seem so bad for three *. First I will start by seperating the input string into 
+two vectors, one for the time remaining for each download, and a corresponding vector for the speed of the 
+download. 
+Once the vectors are split up, I will loop through the vectors, subtracting the time elapsed from each other file
+and adding this elapsed time to the total. Then add all of the free bandwidth to the next element and recalculate 
+the time remaining for this download. 
+This loop will keep going until the last element, where all the bandwidth is being used for the single download 
+and after recalculating the time remaining, it will be added to the result for the final answer. 
+
+So after implementing this, one issue I had was that I wasn't sorting the time remaining vector, which meant 
+some files would finish downloading before the one I was looking at.
+This was causing many issues with the code so i ended up swapping the smallest vector in the array with the 
+current index to always work on the file closest to being downloaded. 
+Another issue which took me way to long to see, was when I was subtracting the elapsed time from my vector of times 
+(t), I was subtracting the elapsed time t(0), for example, from t(0), which resulted in t(0) being 0. And then 
+when I went to subtract the elapsed time t(0), from the rest of the downloading files, no time would be subtracted. 
+This took me way to long to realise what was happening, but once I realised, I just created a 
+subtracted_time variable = t(0), which then made the rest of the code work. 
+
+Overall I was happy with my solution for this question and there were just a few small errors in the logic which 
+led to the question taking a lot longer to complete than what it needed. 
