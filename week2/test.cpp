@@ -4,7 +4,7 @@
 
 int main(void){
     EggCartons carton; 
-    std::cout << carton.minCartons(22) << std::endl;
+    std::cout << carton.minCartons(84) << std::endl;
 
     return 0;
 }

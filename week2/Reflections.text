@@ -12,3 +12,13 @@ One approach to finding the number of 6-packs and 8-packs would be to first
     - check if n is a multiple of 6 or 8 
     - keep subtracting 8 from n until it is a multiple of 6 then return the number 
       of times we subtracted 8 + the result/6. 
+
+So I think this approach nearly worked but it doesn't always work for the minimum number of egg cartons. 
+For example when n = 24, it returns 4 (4x6) instead of 3 (3x8). 
+To solve this issue I could first be checking if it is a multipe of 8 before a multiple of 6, so that would 
+fix the case where n = 24. 
+But considering the case where n = 84, we can get 14 carton of 6 eggs, but we can also get 9 cartons of 8 
+and 2 cartons of 6, for a total of 11 cartons. 
+So clearly I need to remove the condition where we return n/6 if n%6 == 1. 
+I think my original approach might actually work if I just swap the last step around and subtract 6 from 
+n until it is a multiple of 8, or we reach 0 and in that case the answer is just n/6. 
