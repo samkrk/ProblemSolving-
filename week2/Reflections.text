@@ -19,6 +19,28 @@ To solve this issue I could first be checking if it is a multipe of 8 before a m
 fix the case where n = 24. 
 But considering the case where n = 84, we can get 14 carton of 6 eggs, but we can also get 9 cartons of 8 
 and 2 cartons of 6, for a total of 11 cartons. 
-So clearly I need to remove the condition where we return n/6 if n%6 == 1. 
+So clearly I need to remove the first condition where we return n/6 if n%6 == 1. 
 I think my original approach might actually work if I just swap the last step around and subtract 6 from 
 n until it is a multiple of 8, or we reach 0 and in that case the answer is just n/6. 
+
+This method worked and passed all the test cases. 
+
+
+PROBLEM #2 
+Black and Red 
+
+So after reading this problem, it sounds like we need to take some cards off the top of the deck, 
+so that the number of black cards taken off the top will always be greater than the number of red cards. 
+Maybe one way of solving this would be to just try the first position, go through the array, until 
+the number of red cards is greater than the number of black, and then try again from the next card (provided 
+the next card isn't a red). You could keep trying this method until it works, and it should always 
+ensure that the answer is the smallest number of cards needed to cut. So some suedo-code could look like:
+    - initialise red and black counter variables 
+    - while we havent found where to split the deck 
+        - loop through the array starting at index i, counting red and black cards 
+        - If at any time there are more red than black, try again from the next card 
+        - If we reach the end of the deck and we have met the requirement, we can return the index that we started 
+          from in that iteration 
+
+This approach worked on my first submission which was good. One thing to note is that i used the "continue" keyword which I 
+don't think i've ever used before so that was interesting. 
