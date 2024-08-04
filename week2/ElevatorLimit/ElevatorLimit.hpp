@@ -9,8 +9,8 @@ class ElevatorLimit{
     std::vector<int> getRange(std::vector<int> enter, std::vector<int> exit, int physicalLimit){
         std::vector<int> res;
         
-        int max = -10000;
-        int min = 10000;
+        int max = physicalLimit;
+        int min = 0;
 
         int tally = 0;
         for (int i = 0 ; i < enter.size() ; i++){
@@ -26,8 +26,8 @@ class ElevatorLimit{
             }
             // people enter 
             tally += enter.at(i);
-            if (tally > max){
-                max = tally;
+            if (tally > 0 && physicalLimit-tally < max){
+                max = physicalLimit-tally;
             }
             if(max > physicalLimit){
                 return res;

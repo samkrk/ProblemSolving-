@@ -10,11 +10,12 @@ int main(void){
     
     entered.push_back(0);
     entered.push_back(2);
+    
 
     
     exit.push_back(1);
     exit.push_back(0);
- 
+   
 
     std::vector<int> res = el.getRange(entered,exit,1);
 
