@@ -14,20 +14,24 @@ class ElevatorLimit{
 
         int tally = 0;
         for (int i = 0 ; i < enter.size() ; i++){
+            if (enter.at(i)>physicalLimit){return res;}
+            if (exit.at(i)>physicalLimit){return res;}
+            // people leave 
             tally -= exit.at(i);
             if (tally < min){
                 min = tally;
             }
+            if(-min > physicalLimit){
+                return res;
+            }
+            // people enter 
             tally += enter.at(i);
             if (tally > max){
                 max = tally;
             }
-        }
-
-        max = physicalLimit - max;
-        // if max < 0, we have exceeded elevator limit. 
-        if (max < 0){
-            return res;
+            if(max > physicalLimit){
+                return res;
+            }
         }
 
         if (min < 0){
