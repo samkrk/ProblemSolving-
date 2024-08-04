@@ -35,6 +35,10 @@ class ElevatorLimit{
         }
 
         if (min < 0){
+            if (-min > max){ return res;}
+        }
+        
+        if (min < 0){
             res.push_back(-min);
             res.push_back(max);
             return res;
