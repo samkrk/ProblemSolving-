@@ -25,6 +25,7 @@ n until it is a multiple of 8, or we reach 0 and in that case the answer is just
 
 This method worked and passed all the test cases. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 PROBLEM #2 
 Black and Red 
@@ -44,3 +45,68 @@ ensure that the answer is the smallest number of cards needed to cut. So some su
 
 This approach worked on my first submission which was good. One thing to note is that i used the "continue" keyword which I 
 don't think i've ever used before so that was interesting. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+PROBLEM #3
+Derivative Sequence
+
+This problem looks pretty straighforward. I think I will just use a nested loop, with the outer loop counting the 
+number of derivaties (n), and the inner loop for calculating the difference. From the constraints we can see that we won't 
+be given a value of n that exceeds the number of elements in the array, so we don't have to worry about this issue. 
+
+Ended up using a temp array and a next_derivative array to complete this. Probably could have only used one temporary vector
+for a more elegant solution but this way worked as well. 
+Passed all tests on first submission which is good. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+PROBLEM #4 
+Christmas Tree
+
+This problem seems harder than the previous ones. I think one way to solve this problem could be using recursion. 
+To start, consider the case where there is only one level, if we have at least one of each bauble, then there 
+are three ways to decorate the tree. 
+What I am unsure about, is if we have say 8 levels on the tree, but only 6 baubles, could we put one baubles in each 
+row, or does each row have to be filled first before moving onto the next row. And if that is the case, then what if we had 
+5 baubles and 3 rows, so the last row would not be filled. Does this mean we just consider the first two rows only, since 
+the third can never be filled? 
+Actually it says in the instructions that on row k we have to fill k baubles. So I guess if there aren't enough to 
+fill out the last row, we discard those baubles and that row. 
+
+So I think I will try a recursive approach, where for each bauble, we will initially try to put a red one up, then blue, 
+then green, until we reach the end and then maybe we can back track, swapping the red for the blue, and going again, then 
+eventually the greens, until we have exhausted all possible combinations that fit the decorating criterion. 
+
+Honestly im not sure exactly how i would implement this recursive method. So maybe I could create an intermediate function 
+that calculates all the possible combinations on any given level for how many baubles we have, and then I could just 
+multiply the results from each level to get some total. This method would actually still be recursive I think. 
+
+So I call the function for level 1, with r,b,g baubles, if we can put a red bauble down and it doesn't violate the rules,
+then we call the function again for level 2, with r-1,b,g baubles.
+
+After some more thinking, we only get a valid combination when the last row is completed, so this would be the base case 
+of a recursive function. So if for any given row, we can check if we have a valid tree, we will be able to add 
+combinations to the result. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+PROBLEM #5 
+Elevator Limit
+
+So we don't know how many people were in the elevator before the start of the simulation, but we can still determine the 
+largest amount of people that entered the elevator during the simulation. We can compare the elements of entered and exited to 
+determine a running tally of people in the elevator at each floor. This will give us a single vector of the number of people 
+in the elevator during the simulation. So imagine the vector is something like {2,-5,4,20}, with the elevator capacity of 30 people. 
+We know there must have been at least 5 people in the elevator before the simulation, and then the largest number 
+of people in the elevator before the simulation would be 10, because 30-20=10. So the suedo-code for this would be something like
+    - calculate enter[i] - exit[i] for each element 
+    - max = physical limit - max(difference[])
+        - if max < 0, this is impossible so we return 0. 
+    - if min(difference[]) < 0, 
+        - min = min[difference[]]
+        - else min = 0
+    
+ This approach was almost correct but just needed a few changes. So becuase people exit before they enter, the way I was 
+ calculating the tally was slightly wrong, as you need to subtract the amount of people who exit first, and then that gives 
+ you the new minimum value. Other than that the method seems to work. 
