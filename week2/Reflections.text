@@ -89,6 +89,9 @@ After some more thinking, we only get a valid combination when the last row is c
 of a recursive function. So if for any given row, we can check if we have a valid tree, we will be able to add 
 combinations to the result. 
 
+Unfortunately i was unable to solve this problem so had decided to move on to different problems. I will leave 
+my thoughts in the logbook anyway. 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 PROBLEM #5 
@@ -110,3 +113,30 @@ of people in the elevator before the simulation would be 10, because 30-20=10. S
  This approach was almost correct but just needed a few changes. So becuase people exit before they enter, the way I was 
  calculating the tally was slightly wrong, as you need to subtract the amount of people who exit first, and then that gives 
  you the new minimum value. Other than that the method seems to work. 
+
+ So after uploading this several times, there were a few test cases that I failed, so I needed to add some final 
+ checks to ensure my answers made sense. I first added a check that made sure the minimum value was not larger than 
+ the maximum and this solved one of my failed test cases. Then I added a check to ensure that max was not < 0. In 
+ both of these cases I would just return an empty array, as clearly something was not possible about the test case. 
+ After adding these changes, I was able to pass all test cases. 
+
+
+ PROBLEM #6
+ Mooing Cows 
+
+ So my initial thoughts on this problem are that we first want to extract the information from the input string arrays 
+ and put it in a different form that is easier to work with. I will check each element in the arrays, if it is a '.', 
+ I will set that to a 0 in a vector at that index, and if it is a 'C', I will make that a 1 in the same vector. 
+ So now we will have a number of vectors with 0 and 1s, representing the positions of the cows. 
+
+ Then we can use brute force to calculate the the dissatisfaction level for each cow, by using a nested loop to first 
+ calculate the dissatisfaction of each cow in the same row as the cow mooing, where the horizontal distance can be 
+ equal to the for loop index j, and the vertical distance can be the outer for loop index i. 
+
+ So this is essentially what I did, using brute force to calculate the dissatisfaction of every cow from 
+ every other cow. I didn't end up converting the strings to arrays of ints because this wasn't necessary, and 
+ I could just check if we had a cow at the index by looking for 'C' or '.'. 
+ I actually read the question slightly wrong and was trying to calculate the square root of the distance, which led 
+ to me getting the test cases wrong. Also there was an issue with the way I was calculating the distance, as I was 
+ comparing the distance between each cow and checking if it was the minimum, when I should have been adding the 
+ distances from all the cows and then checking if it was the smallest dissatisfaction level. 
