@@ -9,7 +9,7 @@ class MooingCows{
     int dissatisfaction(std::vector<std::string> farmland){
 
         // initialise min dissatisfaction variable
-        int min_dissatisfaction = 100000;
+        int min_dissatisfaction = 100000000;
         int distance = 0;
 
         // now for each cow, calculate the dissatifaction from every other cow. 
