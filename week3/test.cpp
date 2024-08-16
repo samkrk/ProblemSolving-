@@ -1,11 +1,12 @@
 #include <iostream>
 #include "ExerciseMachine/ExerciseMachine.hpp"
 #include "SimpleCompressor/SimpleCompressor.hpp"
+#include "QuickSums/QuickSums.hpp"
 
 int main(void){
 
-    ExerciseMachine m;
-    std::string input = "02:08:35";
-    std::cout << m.getPercentages(input) << std::endl;
+    QuickSums s;
+    std::string nums = "0123456789";
+    std::cout << s.minSums(nums,45) << std::endl;
 }
 

@@ -55,7 +55,12 @@ Quick Sums
 Since this is the bonus problem for the week, I will guess that a good solution will involve 
 recursion, since that was this weeks topic. 
 
-One thing 
+The first thing I think we could do that wouldn't hurt, is you can clearly see in the input array,
+there are some places that have to have a plus sign. Like if the input is a two digit number, 
+there cannot be 3 numbers in a row (not including zeros).
+
+I guess then once we have done a first pass of the array, adding the + signs where they absolutely have to go,
+we could count up 
 
 
 
