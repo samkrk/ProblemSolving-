@@ -1,6 +1,4 @@
 #include <iostream>
-#include "ExerciseMachine/ExerciseMachine.hpp"
-#include "SimpleCompressor/SimpleCompressor.hpp"
 #include "QuickSums/QuickSums.hpp"
 
 int main(void){
