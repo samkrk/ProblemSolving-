@@ -21,14 +21,16 @@ public:
         
         double one_percent = seconds/100;
         double total_percent = one_percent;
-        const double TOLERANCE = 1e-9;
+        const double TOLERANCE = 1e-1;
         
         int num_percents = 1;
         while (std::abs(std::floor(total_percent) - total_percent) > TOLERANCE && num_percents < 100){
             total_percent += one_percent;
+            std::cout << "floor: " << std::floor(total_percent) << " ";
+            std::cout << "total percents " << total_percent <<std::endl;
             num_percents++;
         }
-    
+        std::cout << "One percent: " << one_percent << std::endl;
         // calculate number of functions calls 
         return 100/num_percents -1;
     }
