@@ -1,0 +1,70 @@
+PROBLEM #1
+Strange Computer
+
+So after reading the problem, I think the number of operations needed can be calculated by looking at 
+the memory from left to right. If the first bits in the memory and the desired memory are the same,
+move to the next position. Keep going until they dont match, then change all the elements in 
+the memory at that index, until the end, to the desired bit. Repeat until the end of the array is reached.
+Keep track of the number of swaps with a counter. 
+
+Actually, we don't necessarily need to create another array for the memory, but for a first attempt
+at the problem, I think it would be easier.
+
+After the first attempt, I tested some simple cases but wasn't getting the right answers. My issue was 
+that I was looking at mem[i], which is a character, and comparing it to an int, so they were never 
+the same value. To fix this I just subtracted 48 from the character at mem[i], so now '0' = 0 and 
+'1' = 1.
+
+
+
+PROBLEM #2 
+Exercise Machine
+
+For this problem, the first thing to do is calculate the length of the workout in seconds. 
+From here we can easily find out how many seconds 1% of the workout is, since 1% of the workout 
+is just the length of the workout divided by 100. Then we need to see how many of these 1% increments 
+result in an integer amount of seconds. 
+So if 1% of the workout is 0.5 seconds, we call the function every 2%, for a total of 50 times. (100/2).
+I think the hard part of this problem is figuring out the 2% in the example above. 
+You could use a loop and keep adding 0.5 until you get an int, but I think you could use some 
+common denominator maths as well. I will try the loop first. 
+
+This approach worked but my first attempt was slightly incorrect as in my while loop to calculate 
+how many times I needed to add 1 percent to get an integer, I was accidentally doubling my 1% instead 
+of adding 1%. So I just created a variable percent_total, and added 1 percent to that every time. 
+
+One final correction I had to make was due to the longest test case "23:59:59". My while loop kept adding 
+1% to the total until the integer condition was met, but in this case, it only happens after adding 
+around 10000%. So I added another condition to the while loop which broke it in the case that 
+the number of percentages added was less than 100. 
+
+
+
+PROBLEM #3
+Quick Sums
+
+Since this is the bonus problem for the week, I will guess that a good solution will involve 
+recursion, since that was this weeks topic. 
+
+One thing 
+
+
+
+PROBLEM #4
+Simple Compressor
+
+This looks like another recursive problem since we can have nested compressed strings. 
+I guess the base case is when we have an opening bracket followed by a number and a string and then 
+and end bracket. So maybe I can call the recursive function as soon as we reach an opening bracket,
+parsing in the number imediately after the bracket, then generate an intermediate string that needs 
+to be uncompressed n times. If we reach another opening bracket, we call the recursive function again.
+The recursive function can return an updated data string that the previous recursive functions then 
+resume working on. So some seudo code could be 
+
+loop across initial input array until we reach '['. 
+    call recursive function 
+        insert uncompressed intermediate string into the data
+
+return data string 
+
+Okay so I think it's working now after a long time of failing. 
