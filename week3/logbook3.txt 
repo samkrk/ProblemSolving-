@@ -38,6 +38,9 @@ One final correction I had to make was due to the longest test case "23:59:59". 
 around 10000%. So I added another condition to the while loop which broke it in the case that 
 the number of percentages added was less than 100. 
 
+So actaully the final correction I had to make was due to the floating point precision innacuracies in c++.
+I added a tolerance value 1e-9, to account for these very small floating point errors that were causing 
+some of the test cases to go wrong. 
 
 
 PROBLEM #3
@@ -67,4 +70,11 @@ loop across initial input array until we reach '['.
 
 return data string 
 
-Okay so I think it's working now after a long time of failing. 
+Okay so I think it's working now after a long time of failing. This problem took me way too long to do 
+and I think recursion is definetly not a strong suit for me. 
+What I had to change was instead of insterting the uncompressed string back into the data variable, 
+I would just remove everything after the first opening bracket, unpack it, and then add the unpacked 
+version back on. I don't think this is very efficient at all and I'm sure there are much better, faster and 
+easier ways to solve this but it still passed all the test cases. 
+At least I got some practice with recursion, and also with some of the built in string functions, such as
+append, insert, erase and substr. 
