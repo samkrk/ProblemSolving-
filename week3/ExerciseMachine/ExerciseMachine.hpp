@@ -5,8 +5,26 @@
 
 class ExerciseMachine{
 public: 
+
+    // Function to compute GCD of two numbers
+    int gcd(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+    // Function to find the denominator of the fraction
+    int getDenominator(int num) {
+        int denominator = 100; // Since the input number represents a decimal with a denominator of 100
+        int commonDivisor = gcd(num, denominator);
+        return denominator / commonDivisor;
+    }
+
     int getPercentages(std::string time){
-        double seconds = 0;
+        int seconds = 0;
         // calculate total time in seconds. 
         // seconds
         seconds += (time[7]-48);
@@ -18,21 +36,9 @@ public:
         seconds += (time[1]-48) * 3600;
         seconds += (time[0]-48) * 36000;
 
+        int num = seconds%100;
+        return (100/getDenominator(num)) - 1;
         
-        double one_percent = seconds/100;
-        double total_percent = one_percent;
-        const double TOLERANCE = 1e-1;
-        
-        int num_percents = 1;
-        while (std::abs(std::floor(total_percent) - total_percent) > TOLERANCE && num_percents < 100){
-            total_percent += one_percent;
-            std::cout << "floor: " << std::floor(total_percent) << " ";
-            std::cout << "total percents " << total_percent <<std::endl;
-            num_percents++;
-        }
-        std::cout << "One percent: " << one_percent << std::endl;
-        // calculate number of functions calls 
-        return 100/num_percents -1;
     }
 };
 
