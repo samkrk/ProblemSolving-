@@ -59,9 +59,25 @@ The first thing I think we could do that wouldn't hurt, is you can clearly see i
 there are some places that have to have a plus sign. Like if the input is a two digit number, 
 there cannot be 3 numbers in a row (not including zeros).
 
-I guess then once we have done a first pass of the array, adding the + signs where they absolutely have to go,
-we could count up 
+So if we want to use recursion we need a base case and a recursive case. I suppose the base case could be 
+when the numbers = sum. So here the recursive case would involve subtracting some numbers off the sum 
+and passing the remaining numbers array back into the function. We can keep track of the number of 
+plus signs by returning 1 + minSums(xxx), since in this recursive case, by subtracting some numbers 
+from the given sum, we are essentially adding a plus sign. In the cases where the remaining numbers 
+are actually less than the given sum, we can return -1, sinces theres no way we can make it work. 
 
+In order to get the minimum number of plus signs, we need to try subtracting the largest amount 
+of numbers at once, so we will try the whole array first and increment down until it works. 
+
+So this approach works for some test cases, but I'm having some issues with zeros. Currently 
+my algorithm is adding plus signs for zeros. To fix this, i'll add a check that ensures if the 
+total we are subtracting off the sum is 0, decrement i and continue on. 
+
+I added a helper function, getTotal, which converts the numbers string into an integer value that 
+can be compared to sum. This just helped to make the code more readable as I was using this function 
+frequently. 
+
+This approach worked and I ended up passing all the test cases. 
 
 
 PROBLEM #4
@@ -89,3 +105,17 @@ version back on. I don't think this is very efficient at all and I'm sure there 
 easier ways to solve this but it still passed all the test cases. 
 At least I got some practice with recursion, and also with some of the built in string functions, such as
 append, insert, erase and substr. 
+
+
+End of week reflection
+
+Even though I only did 4 problems this week, I think I spent more time on the practice than the 
+previous two weeks. The recursion problems Quick Sums and Simple Compressor were both quite challenging 
+and I spent a lot of time trying to get them to work. Recursion is definetly an area that I'm not 
+fully confident in, and if I saw a recursion question in a prac exam I would probably skip it. So it 
+was good for me to get some more experience in these question types. Strange Computer was pretty 
+straightforward and I think I did that question relatively quickly which was good because I need to be 
+able to code the easy questions quickly in the prac exams. Exercise Machine was one that I thought was 
+easy, but due to the floating point innacuracies ended up causing me some trouble. It was good 
+to work with floats instead of ints for a change, despite that method not actually working.
+Overall, it was a succesfull week of practice and I think I learnt alot. 
