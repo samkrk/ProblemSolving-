@@ -37,25 +37,12 @@ public:
             return -1;
         }
 
-        // get length of the sum 
-        int sum_length = 1;
-        int temp = sum;
-        while (temp >= 10){
-            sum_length++;
-            temp /= 10;
-        }
-        
         // else we try minSums again from the furthest away possible digit
-        int start_index = 0;
-        // deal with leading zeros 
-        while (numbers.at(start_index) == '0'){
-            start_index++;
-        }
         // std::cout << "Start index: " << start_index << std::endl;
-        int i = sum_length;
+        int i = numbers.size()-1;
         while(i > 0){
             // std::cout << "Trying length: " << i << std::endl;
-            int next_sum = getTotal(numbers.substr(start_index,i));
+            int next_sum = getTotal(numbers.substr(0,i));
             // std::cout << "Next sum: " << next_sum << std::endl;
             if (next_sum == 0){
                 i--;
@@ -67,9 +54,9 @@ public:
             }
             else {
                 // std::cout << "Recursive called" << std::endl;
-                int res = minSums(numbers.substr(i+start_index, numbers.size()+1), sum-next_sum);
+                int res = minSums(numbers.substr(i, numbers.size()+1), sum-next_sum);
                 if (res < 0){
-                    i--;
+                    i--; 
                     continue;
                 }
                 else{
