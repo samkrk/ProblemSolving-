@@ -8,6 +8,7 @@ class PaternityTest{
     public:
     std::vector<int> possibleFathers(std::string child, std::string mother, std::vector<std::string> men){
         std::vector<std::string> potential_fathers; // fathers with at least half the DNA of the child 
+        std::vector<int> potential_fathers_index; // list of the indexes of the potential fathers in the men array 
         std::vector<int> possible; // final result vector 
         std::vector<int> missing_indexes; // missing DNA indexes with child and mother 
         int not_the_father = 0;
@@ -22,8 +23,10 @@ class PaternityTest{
             }
             if (count >= child.size()/2){
                 potential_fathers.push_back(men.at(i));
+                potential_fathers_index.push_back(i);
             }
         }
+        
 
         // loop through mother array and find missing indexes with child 
         for (int i = 0 ; i < mother.size() ; i++){
@@ -47,7 +50,7 @@ class PaternityTest{
                 continue;
             }
             else {
-                possible.push_back(i);
+                possible.push_back(potential_fathers_index.at(i));
             }
         }
         return possible;
