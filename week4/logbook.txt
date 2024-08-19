@@ -20,4 +20,10 @@ I guess one way to avoid this error could be to track the second largest value i
 profit was at index k, the largest profit was at index i and we know the minimum decay value, we could check if 
 profit[k] - decay[i] > profit[i] - min. If this is true we return the first part of the inequality and if its false 
 we return what we were returning previously. 
+
+So a slight issue with that approach was the way I initialised my second_max and second_index elements. They needed to be 
+pointing to different values than the max and max_index variables to begin with. 
+
+The final thing wrong with what I had was that my method of finding the second largest element only worked if the 
+second largest element occured before the largest element in the array. 
     

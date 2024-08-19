@@ -12,11 +12,18 @@ class TimeTravellingCellar{
         int second_max = profit.at(1);
         int second_index = 1;
         for (int i = 0 ; i < profit.size() ; i++){
-            if (profit.at(i) > max){
-                second_max = max;
-                second_index = max_index;
-                max = profit.at(i);
-                max_index = i;
+            if (profit.at(i) > second_max){
+                if (profit.at(i) > max){
+                    second_max = max;
+                    second_index = max_index;
+                    max = profit.at(i);
+                    max_index = i;
+                }
+                else {
+                    second_max = profit.at(i);
+                    second_index = i;
+                }
+                
             }
         }
         // std::cout << "Max: " << max << std::endl;

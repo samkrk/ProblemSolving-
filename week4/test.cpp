@@ -5,14 +5,14 @@ int main(void){
 
     TimeTravellingCellar t;
     std::vector<int> p;
-    p.push_back(3); 
-    p.push_back(2); 
+    p.push_back(9400); 
+    p.push_back(9270); 
 
 
     
     std::vector<int> d;
-    d.push_back(1);
-    d.push_back(2);
+    d.push_back(526);
+    d.push_back(1252);
     
      
 
