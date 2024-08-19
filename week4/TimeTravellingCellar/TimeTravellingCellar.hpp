@@ -18,7 +18,7 @@ class TimeTravellingCellar{
         // std::cout << "Max: " << max << std::endl;
 
         // find min decay 
-        int min = decay.at(0);
+        int min = max;
         for (int j = 0 ; j < decay.size() ; j++){
             // std::cout << j << std::endl;
             if (j == max_index){

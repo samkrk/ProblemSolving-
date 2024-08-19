@@ -5,16 +5,15 @@ int main(void){
 
     TimeTravellingCellar t;
     std::vector<int> p;
-    p.push_back(1000); 
-    p.push_back(500); 
-    p.push_back(250); 
-    p.push_back(125); 
+    p.push_back(3); 
+    p.push_back(2); 
+
+
     
     std::vector<int> d;
-    d.push_back(64);
-    d.push_back(32);
-    d.push_back(16);
-    d.push_back(8);
+    d.push_back(1);
+    d.push_back(2);
+    
      
 
     std::cout << t.determineProfit(p,d) << std::endl;

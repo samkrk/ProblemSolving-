@@ -1,0 +1,16 @@
+PROBLEM #1
+Time Travelling Cellar
+
+Unless there are other edge cases that i'm missing, it looks like we just need to find the difference between the largest element 
+in profit and the smallest element in decay, provided they aren't at the same index. 
+
+So I will, 
+    find largest element in profit at index i. 
+    loop through decay, skipping i, finding the minimum at index j 
+    return profit[i]-decay[j]
+
+This worked for almost all the test cases. My issue on my first submission was that I was initialising the min variable to the first 
+element of decay, and in the case where this was the minimum and the maximum was also the first element, it would be wrong. 
+To fix this, i just changed the min variable to the max variable that we just found. Since the result is always positive, this 
+approach should work now. 
+    
