@@ -89,7 +89,7 @@ After some more thinking, we only get a valid combination when the last row is c
 of a recursive function. So if for any given row, we can check if we have a valid tree, we will be able to add 
 combinations to the result. 
 
-Unfortunately i was unable to solve this problem so had decided to move on to different problems. I will leave 
+Unfortunately i was unable to solve this problem so I decided to move on to different problems. I will leave 
 my thoughts in the logbook anyway. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -120,6 +120,7 @@ of people in the elevator before the simulation would be 10, because 30-20=10. S
  both of these cases I would just return an empty array, as clearly something was not possible about the test case. 
  After adding these changes, I was able to pass all test cases. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
  PROBLEM #6
  Mooing Cows 
@@ -140,3 +141,17 @@ of people in the elevator before the simulation would be 10, because 30-20=10. S
  to me getting the test cases wrong. Also there was an issue with the way I was calculating the distance, as I was 
  comparing the distance between each cow and checking if it was the minimum, when I should have been adding the 
  distances from all the cows and then checking if it was the smallest dissatisfaction level. 
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ Final reflections
+
+ I enjoyed problems 1,2,3 and 5, but was unable to solve the Christmas Tree problem and 
+ was not overly happy with my solution for Mooing Cows. I spent a lot of time thinking about 
+ the Christmas Tree problem so it kind of sucked that I couldn't even think of a basic solution. 
+ As for the Mooing Cows problem, I used 4 nested loops in my solution, which just felt very wrong, 
+ and this problem took longer than I would have liked given that it was meant to be the easiest 
+ difficulty. 
+ Overall I completed 5 problems this week which is good, but I do feel like I need to get better 
+ at solving different types of problems, such as the Christmas Tree problem which probably involved 
+ recursion or some other tactics to solve. 
