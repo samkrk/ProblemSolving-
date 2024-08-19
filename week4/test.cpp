@@ -1,20 +1,28 @@
 #include "TimeTravellingCellar/TimeTravellingCellar.hpp"
+#include "PaternityTest/PaternityTest.hpp"
 #include <iostream>
 
 int main(void){
 
-    TimeTravellingCellar t;
-    std::vector<int> p;
-    p.push_back(3); 
-    p.push_back(2); 
+    PaternityTest p;
 
-
+    std::string child = "ABABAB";
     
-    std::vector<int> d;
-    d.push_back(1);
-    d.push_back(2);
-    
-     
 
-    std::cout << t.determineProfit(p,d) << std::endl;
+    std::string mother = "ABABAB";
+    
+    
+    std::vector<std::string> fathers;
+    fathers.push_back("ABABAB");
+    fathers.push_back("ABABCC");
+    fathers.push_back("ABCCDD");
+    fathers.push_back("CCDDEE");
+    
+    std::vector<int> res = p.possibleFathers(child,mother,fathers);
+
+    for (int i = 0 ; i < res.size() ; i++){
+        std::cout << res.at(i) << " ";
+    }
+    std::cout << std::endl;
+
 }

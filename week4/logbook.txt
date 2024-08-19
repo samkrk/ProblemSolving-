@@ -26,4 +26,36 @@ pointing to different values than the max and max_index variables to begin with.
 
 The final thing wrong with what I had was that my method of finding the second largest element only worked if the 
 second largest element occured before the largest element in the array. 
+My code is pretty unreadable at this point so im going to split in up into 3 arrays, first find the largest profit,
+then second largest, then the min decay. 
+This worked and I finally passed all the test cases. 
+
+
+PROBLEM #2 
+Paternity Test
+
+So for this problem, the first thing we need to do is find which letters in the child don't match the mother. 
+Once we have a list of the indexes that we need to check, we can compare them with all of the fathers DNAs at 
+the respective indexes. If they do not match we continue with the next father, if they all match, we push back the 
+index of the father in the resulting array. I'm not entirely sure if i've understood the question perfectly, 
+but I will try to solve it anyway as I understand it. 
+So some pseduo code for this approach could be 
+
+Loop through mother DNA, 
+    Where the childs DNA does not match the mothers, add the index of the DNA to a list called missing 
+
+Loop through the men array 
+    Loop through the missing array
+        check missing.at(j) == man.at(i).at(j)
+            if they dont match, skip this man 
+            if they do match keep going 
+    if we have a complete match, add this mans index i to the answer 
+
+So I think I definitely did slightly misunderstand the question. I think I need to be checking 
+if the father has at least half of the same DNA as the child first, then I can compare those possible 
+fathers with the remainder of my algorithm. 
+
+End of week reflection 
+
+Was really not happy with my performance on the first question. Had to submit it 5 times before i passed all the test cases. 
     
