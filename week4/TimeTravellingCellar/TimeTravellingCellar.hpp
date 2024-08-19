@@ -9,8 +9,8 @@ class TimeTravellingCellar{
         // find max profit
         int max = profit.at(0);
         int max_index = 0;
-        int second_max = 0;
-        int second_index = 0;
+        int second_max = profit.at(1);
+        int second_index = 1;
         for (int i = 0 ; i < profit.size() ; i++){
             if (profit.at(i) > max){
                 second_max = max;
