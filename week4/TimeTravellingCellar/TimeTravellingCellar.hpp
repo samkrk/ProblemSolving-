@@ -9,8 +9,12 @@ class TimeTravellingCellar{
         // find max profit
         int max = profit.at(0);
         int max_index = 0;
+        int second_max = 0;
+        int second_index = 0;
         for (int i = 0 ; i < profit.size() ; i++){
             if (profit.at(i) > max){
+                second_max = max;
+                second_index = max_index;
                 max = profit.at(i);
                 max_index = i;
             }
@@ -29,7 +33,12 @@ class TimeTravellingCellar{
             }
         }
         // std::cout << "Min: " << min << std::endl;
-        return max-min;
+        if (profit.at(second_index) - decay.at(max_index) > max-min){
+            return profit.at(second_index) - decay.at(max_index);
+        }
+        else {
+            return max-min;
+        }
     }
 
 };

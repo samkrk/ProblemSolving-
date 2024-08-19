@@ -13,4 +13,11 @@ This worked for almost all the test cases. My issue on my first submission was t
 element of decay, and in the case where this was the minimum and the maximum was also the first element, it would be wrong. 
 To fix this, i just changed the min variable to the max variable that we just found. Since the result is always positive, this 
 approach should work now. 
+
+Now i've passed 94/100 test cases, but the algorithm fails in some specific edge cases. What sometimes happens, is its better 
+to take the second largest value in profit, because the largest value in profit has a very small corresponding decay value. 
+I guess one way to avoid this error could be to track the second largest value in profit as well. So if the second largest 
+profit was at index k, the largest profit was at index i and we know the minimum decay value, we could check if 
+profit[k] - decay[i] > profit[i] - min. If this is true we return the first part of the inequality and if its false 
+we return what we were returning previously. 
     
