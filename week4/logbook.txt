@@ -53,7 +53,17 @@ Loop through the men array
 
 So I think I definitely did slightly misunderstand the question. I think I need to be checking 
 if the father has at least half of the same DNA as the child first, then I can compare those possible 
-fathers with the remainder of my algorithm. 
+fathers with the remainder of my algorithm.
+
+This approach passed 90/100 test cases, but the issue was that I was returning the indexes of the possible 
+fathers in the wrong array so some of the cases failed. To fix this I just created another vector which 
+stored the indexes of the potential fathers in the men array. 
+
+
+PROBLEM #3
+Unseal the Safe
+
+
 
 End of week reflection 
 
