@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-class UnsealtheSafe{
+class UnsealTheSafe{
     public:
     long recursive(int button, int N){
         long res = 0;
