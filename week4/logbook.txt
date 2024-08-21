@@ -63,9 +63,46 @@ stored the indexes of the potential fathers in the men array.
 PROBLEM #3
 Unseal the Safe
 
+This problem seems pretty interesting given the range of possible inputs is very small. I feel like 
+recursion could be used for the small cases, but when N approaches 30 and the possible 
+combinations is in the millions or billions, this might be too slow. 
+
+
+
+
+
+PROBLEM #4
+Monsters Valley2
+
+So the most expensive and worst case would be if we bribe all the monsters. We could use 
+brute force to try every combination of bribing different monsters and then find the cheapest 
+path that works. 
+
+We have to bribe the first monster for some cost and that gives us some scariness level of 
+our group of monsters. If our scariness level is greater than all the other monsters then we 
+just return the cost. I guess if I was to use recursion this would be the base case.
+So the recursive case would be we need to bribe some monsters 
+
+Another thing I can see, is that if a monsters dread is greater than the sum of all that 
+came before it, we have to bribe this monster. 
+So we can get a subset of monsters that we must bribe in order to pass. 
+Then with the remaining mosters, these can be walked pass if we have enough scariness. 
+So for these remaining monsters, we want to minimise the cost needed to pass the monsters until 
+we reach another one we have to buy.
+
+Ok so I actually think the easiest way to do this it to just use a recursive brute force method 
+and try every valid combination of monsters. So the base case of this recursive method is 
+when there are no more monsters left in the vector. If there are monsters left, 
+we first check that our scariness is greater than the monsters dread. If this is not the case 
+then we have to bribe the monster. Once we have the option to walk past or bribe the monster, 
+we recusively call the function in both cases, where we buy and we walk past, 
+passing the scariness of our pack, and the remaining monsters and their prices as the 
+inputs to the function. We can then return the cost of the cheaper one. 
+
 
 
 End of week reflection 
 
 Was really not happy with my performance on the first question. Had to submit it 5 times before i passed all the test cases. 
     
+
