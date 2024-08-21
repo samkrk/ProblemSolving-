@@ -99,6 +99,10 @@ we recusively call the function in both cases, where we buy and we walk past,
 passing the scariness of our pack, and the remaining monsters and their prices as the 
 inputs to the function. We can then return the cost of the cheaper one. 
 
+So I was having this dumb issue where the scariness levels exceeded the INT_MAX value. So I added 
+a check that ensured if our current scariness level was over 2,000,000 we could return 0 additional cost 
+since that is above any monsters possible dread. 
+
 
 
 End of week reflection 
