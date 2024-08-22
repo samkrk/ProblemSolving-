@@ -83,6 +83,8 @@ run. To fix this, I used memoistation and added a vector of vectors, memo, which
 results of previous function calls. Now when I run the function for N = 30, it runs in almost no 
 time at all. 
 
+The code now worked and passed all the test cases. 
+
 
 
 PROBLEM #4
@@ -119,10 +121,30 @@ since that is above any monsters possible dread.
 Also, in my while loop which keeps bribing the monsters if we absolutely have to, I added a condition that 
 if we had no more monsters left we just return our cost.
 
+So this passed 97/100 test cases. The one that I could see failed didn't really look any different to 
+the other test cases, and I was only off by 1 cost. I could see the inputs were all quite large so I just 
+guessed it was another integer overflow causing the error. I added a check at the top 
+of the recursive function that checked if the scariness was over 2000000000 or less than 0, and in 
+this case we could just return 0 additional cost since we had enough scariness to walk past any 
+monsters. 
+
+This worked and I passed all the test cases. 
 
 
 End of week reflection 
 
-Was really not happy with my performance on the first question. Had to submit it 5 times before i passed all the test cases. 
+Was really not happy with my performance on the first question. Had to submit it 5 times 
+before i passed all the test cases. Question 2 was okay considering I kind of misunderstood the 
+question initially. Luckily the way I did the question meant I just had to add on some other 
+functionality to my method and I then passed the tests soon after. I was really happy with question 3 
+and that was probably the most interesting problem I've done so far in this course. I had a lot 
+of fun trying to visualise the recursive relationship between the buttons and the lengths on paper. 
+Also, that was the first time i've used memoistation to solve a problem and it was cool to see it 
+improve the speed of the algorithm so dramatically. 
+Question 4 felt pretty difficult intially and I was a bit stuck trying to figure out what 
+approach to take. I wasn't sure if I should use recursion or brute force, but then I sort of 
+realised that you could recursively brute force it and just try everything using recursion. 
+Once I figured that out the code was actually pretty simple, except for the integer overflow issues 
+that kept happening. But now I know to look out for those issues when we have inputs of that size. 
     
 
