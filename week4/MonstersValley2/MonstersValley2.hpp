@@ -9,6 +9,9 @@ class MonstersValley2{
     public:
 
     int rec(std::vector<int> dread, std::vector<int> price, int scariness){
+        if (scariness > 2000000000 || scariness < 0){
+            return 0;
+        }
         // initialise cost variable to return 
         int cost = 0;
         int curr_scariness = scariness;
