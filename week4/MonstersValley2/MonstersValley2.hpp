@@ -9,6 +9,9 @@ class MonstersValley2{
     public:
 
     int rec(std::vector<int> dread, std::vector<int> price, int scariness){
+        // initialise cost variable to return 
+        int cost = 0;
+        int curr_scariness = scariness;
         /*
         std::cout << "Remaining monsters: ";
         for (int i = 0 ; i < dread.size() ; i++){
@@ -21,14 +24,22 @@ class MonstersValley2{
         }
         std::cout << std::endl;
         */
+        // base case where we only have one monster left 
+        if (dread.size() == 1){
+            // check if we need to buy it 
+            if (dread.at(0) > curr_scariness){
+                return cost + price.at(0);
+            }
+            else {
+                return cost;
+            }
+        }
 
-        // initialise cost variable to return 
-        int cost = 0;
-        int curr_scariness = scariness;
+        
         // while we have to bribe the next monster 
-        int must_bribe = 1;
+        bool must_bribe = 1;
         int index = 0;
-        int in_bounds = 1;
+        bool in_bounds = 1;
         while (must_bribe && in_bounds){
             /*
             std::cout << "Dread.size() - index = " << dread.size() - index << std::endl;
@@ -36,8 +47,8 @@ class MonstersValley2{
             std::cout << "Current cost: " << cost << std::endl;
             */
             // if we are in bounds 
-            if (dread.size() - index == 1){ // if there is only one monster left 
-                must_bribe = 0; // exit while loop 
+            if (index == dread.size()){ // if there are no monsters left 
+                return cost;
                 break;
             }
             // if we have to bribe the next monster

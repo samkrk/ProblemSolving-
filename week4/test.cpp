@@ -8,9 +8,9 @@ int main(void){
 
     MonstersValley2 m;
     std::vector<int> monsters;
-    monsters.push_back(1999999991);
-    monsters.push_back(1999999992);
-    monsters.push_back(1999999993);
+    monsters.push_back(606);
+    
+    
     /*
     monsters.push_back(1999999994);
     monsters.push_back(1999999995);
@@ -23,9 +23,9 @@ int main(void){
    
 
     std::vector<int> cost;
-    cost.push_back(1); 
-    cost.push_back(1); 
-    cost.push_back(1); 
+    cost.push_back(2); 
+    
+    
     /*
     cost.push_back(1); 
     cost.push_back(1); 
