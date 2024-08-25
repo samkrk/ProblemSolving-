@@ -8,7 +8,9 @@ int main(void){
     
 
 
-    std::cout << r.decode("9999999999999999999999999999999999999999999999999X") << std::endl;
+    std::cout << r.decode("100W") << std::endl;
+    
+    
 }
 
 

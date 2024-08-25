@@ -11,6 +11,7 @@ class RunLengthEncoding{
             int n = text.at(i) - '0';
             int index = 1;
             while (true){
+                
                 if (text.at(index + i) <= '9'){
                     n *= 10;
                     n += text.at(index + i) - '0';
@@ -19,7 +20,7 @@ class RunLengthEncoding{
                 if (n > 50){
                     break;
                 }
-                else {
+                else if (text.at(index + i) > '9'){
                     break;
                 }
             }
