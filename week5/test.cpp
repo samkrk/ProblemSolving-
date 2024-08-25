@@ -1,11 +1,14 @@
 #include "Multiples/Multiples.hpp"
+#include "RunLengthEncoding/RunLengthEncoding.hpp"
 
 #include <iostream>
 
 int main(void){
-    Multiples m;
+    RunLengthEncoding r;
     
 
 
-    std::cout << m.number(-75312,407891,14) << std::endl;
+    std::cout << r.decode("123456789012345678901234567890B") << std::endl;
 }
+
+

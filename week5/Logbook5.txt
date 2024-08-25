@@ -1,0 +1,24 @@
+
+PROBLEM #1
+Multiples
+
+Design Ideas: For this problem I think we can just use brute force, starting from 
+the minimum value and then checking if this number mod factor is zero. 
+
+Reflection: Pretty straightforward. Passed on first attempt 
+
+
+PROBLEM #2
+Run Length Encoding
+
+Design Ideas: Loop across each element in the input string, if its a number, add n times the next 
+letter to the result string. If its just a letter, add it to the result string. 
+
+Trouble Shooting: So my code works but I didn't realise we could have more than 1 digit in a row. 
+The hardest part about this problem I would say, is extracting the numbers from the string. I can't really see 
+a clear way to extend my current approach to work for numbers with more than one digit so I will have to 
+rethink my strategy. 
+
+I will make a helper function called findNumber which will be called when we encounter a digit in 
+the main loop. This findNumber function will find and return the number in the string and return 
+the index to continue the search at. 
