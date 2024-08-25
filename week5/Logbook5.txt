@@ -22,3 +22,7 @@ rethink my strategy.
 I will make a helper function called findNumber which will be called when we encounter a digit in 
 the main loop. This findNumber function will find and return the number in the string and return 
 the index to continue the search at. 
+
+Failed a test with input: 9999999999999999999999999999999999999999999999999X. Probably due to integer 
+overflow so just added a check to my findNumber function that in the case where the number is 
+larger than 50 we break and can return TOO LONG. 

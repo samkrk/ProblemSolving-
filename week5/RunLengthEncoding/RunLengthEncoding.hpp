@@ -16,6 +16,9 @@ class RunLengthEncoding{
                     n += text.at(index + i) - '0';
                     index++;
                 }
+                if (n > 50){
+                    break;
+                }
                 else {
                     break;
                 }

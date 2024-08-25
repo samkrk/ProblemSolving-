@@ -8,7 +8,7 @@ int main(void){
     
 
 
-    std::cout << r.decode("123456789012345678901234567890B") << std::endl;
+    std::cout << r.decode("9999999999999999999999999999999999999999999999999X") << std::endl;
 }
 
 
