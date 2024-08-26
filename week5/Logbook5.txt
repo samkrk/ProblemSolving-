@@ -49,3 +49,30 @@ to find a quicker and more elegant solution.
 I think we could use recursion, so we start with the first element of houses, selecting the cheapest 
 colour and then we call a recursive function with the rest of the houses, but the next house cannot 
 be the same colour as the previous. 
+
+To extract the painting costs from each house I will use ss stream and put all the values in a 
+matrix. Once I have the costs in a matrix, my recursive function will be given this matrix, as well 
+as the colour of the previous house, and the current index of houses we are working on. The base 
+case will be when there is only 1 house left, and we will simply choose the cheapest option as long 
+as its not the same colour as the previous house. The recursive case will be calling the function 
+again, but we will have to call it twice since we have two colours to choose from. Then we will 
+compare which of the two function calls was cheaper and return the cheaper one. 
+
+Reflection:
+This approach worked although it's very slow and took several minutes for the autograder to finish. 
+I was happy with my plan and it was good that it passed on the first attempt. It was also good 
+to use ss stream again since I don't normally use this and still need to get familiar with 
+the functionality. 
+
+
+PROBLEM #4
+House Building
+
+Design Ideas:
+I think for this problem, I will start by finding the average height of the area. Lets 
+say we get 4.5. Then we can calculate the difference between each element and 4, if it's 
+smaller than 4, and each element and 5, if it's greater than 5. 
+
+This sometimes works, but not every time. In some cases it's best to round down to 3 and 4 or 
+up again to 5 and 6. So I think I will just try several pairs of numbers, near the average, and 
+then return the lowest effort value. 
