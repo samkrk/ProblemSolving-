@@ -1,3 +1,4 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 PROBLEM #1
 Multiples
@@ -7,6 +8,7 @@ the minimum value and then checking if this number mod factor is zero.
 
 Reflection: Pretty straightforward. Passed on first attempt 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 PROBLEM #2
 Run Length Encoding
@@ -37,6 +39,7 @@ This problem took longer than I would have liked. Good practice anyway since the
 this question felt pretty similar to the ones in the practice exams. Just need to get quicker and 
 try to cover all bases on the first attempt. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 PROBLEM #3
 RGB Street
@@ -64,6 +67,7 @@ I was happy with my plan and it was good that it passed on the first attempt. It
 to use ss stream again since I don't normally use this and still need to get familiar with 
 the functionality. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 PROBLEM #4
 House Building
@@ -83,3 +87,21 @@ and easier if we just have a vector which contains the number of occurances of e
 Trouble Shooting:
 First upload had a compile fail due to using INT_MAX. Going to upload again using a value close 
 to the INT_MAX, i.e. 2147483600.
+
+So my second upload compiled correctly, and I passed 78/100 test cases, but after some inspection, the test case I failed 
+was using the levels of (avg+1,avg+2), which I wasnt accounting for. So I'm not sure if I should set up a for loop that 
+tries every pair of levels, or simply add another case for this one I missed. 
+
+Reflection:
+I ended up loop through each pair of levels and then finding the minimum one, so I didn't actually need to calculate the average. 
+This was a pretty good result since I ended up removing a lot of code and the whole solution was really only about 35 lines long.
+This was the first 4* problem I've attempted and it wasn't as bad as I thought it would be. I'm not sure why it was 4* to be honest, 
+it felt no harder than the 3* problems. Either way it was good to get it done.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+END OF WEEK REFLECTION
+Overall I was happy with how I went this week. Attempted some easier problems at the start to work on my speed for the prac exams, but 
+also did the bonus problem and a 4* problem to finish. Got some practice using ss stream which is a pretty helpful tool to have. 
+Probably my most problem-free week so far which is a good sign. Only had to submit at most a couple of times for the problems so I'm 
+happy with that. 
