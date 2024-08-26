@@ -11,10 +11,12 @@ Reflection: Pretty straightforward. Passed on first attempt
 PROBLEM #2
 Run Length Encoding
 
-Design Ideas: Loop across each element in the input string, if its a number, add n times the next 
+Design Ideas: 
+Loop across each element in the input string, if its a number, add n times the next 
 letter to the result string. If its just a letter, add it to the result string. 
 
-Trouble Shooting: So my code works but I didn't realise we could have more than 1 digit in a row. 
+Trouble Shooting: 
+So my code works but I didn't realise we could have more than 1 digit in a row. 
 The hardest part about this problem I would say, is extracting the numbers from the string. I can't really see 
 a clear way to extend my current approach to work for numbers with more than one digit so I will have to 
 rethink my strategy. 
@@ -26,3 +28,24 @@ the index to continue the search at.
 Failed a test with input: 9999999999999999999999999999999999999999999999999X. Probably due to integer 
 overflow so just added a check to my findNumber function that in the case where the number is 
 larger than 50 we break and can return TOO LONG. 
+
+Now passed 95/100 but failed test "100W". Needed to change the 'else' statement to an 'else if' statement 
+in my helper function. Passed all cases now.
+
+Reflection: 
+This problem took longer than I would have liked. Good practice anyway since the difficulty of 
+this question felt pretty similar to the ones in the practice exams. Just need to get quicker and 
+try to cover all bases on the first attempt. 
+
+
+PROBLEM #3
+RGB Street
+
+Design Ideas:
+So we could use brute force for this problem, and since the number of houses is not greater than 20, 
+brute force should be possible. On the other hand I would rather not use brute force and would like 
+to find a quicker and more elegant solution. 
+
+I think we could use recursion, so we start with the first element of houses, selecting the cheapest 
+colour and then we call a recursive function with the rest of the houses, but the next house cannot 
+be the same colour as the previous. 
