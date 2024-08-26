@@ -17,77 +17,35 @@ class HouseBuilding{
             }
         }
 
-        // get average 
-        int sum = 0;
-        for (int i = 0 ; i < digits.size() ; i++){
-            sum += digits.at(i)*i;
+        // try all pairs of levels 
+        std::vector<int> level_pairs;
+        int base = 0;
+        for (int k = 0 ; k < 9 ; k++){
+            int effort = 0;
+            for (int i = 0 ; i < digits.size() ; i++){
+                if (i == base || i == base + 1){
+                    continue;
+                }
+                if (i < base){
+                    effort += (base - i) * digits.at(i); // height differnce * number of occurances 
+                }
+                else if (i > base + 1){
+                    effort += (i - base - 1) * digits.at(i);
+                }
+            }
+            level_pairs.push_back(effort);
+            base++;
         }
-        int avg = sum/(area.size()*area.at(0).size());
     
-
-        // try levels at (avg-1,avg) 
-        int effort = 0;
-        switch (avg){
-            case 0: // cannot do levels (-1, 0) so just skip, levels (0,1) will be less effort always
-                effort = 2147483600;
-                break;
-            default:
-            for (int i = 0 ; i < digits.size() ; i++){
-                if (i == avg - 1 || i == avg){
-                    continue;
-                }
-                if (i < avg - 1){
-                    effort += (avg - 1 - i) * digits.at(i); // height differnce * number of occurances 
-                }
-                else if (i > avg){
-                    effort += (i - avg) * digits.at(i);
-                }       
+        // return minimum of the efforts 
+        int min_effort = 2147483600;
+        for (int i = 0 ; i < level_pairs.size() ; i++){
+            if (level_pairs.at(i) < min_effort){
+                min_effort = level_pairs.at(i);
             }
-            break;
         }
-        int first_case = effort;
-
-        // (avg, avg+1) case 
-        effort = 0;
-        switch (avg){
-            case 9: // cannot do levels (9,10) so levels (8,9) will always be less effort
-                effort = 2147483600;
-            default:
-            for (int i = 0 ; i < digits.size() ; i++){
-                if (i == avg || i == avg + 1){
-                    continue;
-                }
-                if (i < avg){
-                    effort += (avg - i) * digits.at(i); // height differnce * number of occurances 
-                }
-                else if (i > avg + 1){
-                    effort += (i - avg - 1) * digits.at(i);
-                }
-                
-            }
-            break;
-
-        }
-
-        // debug printing 
-        /*
-        std::cout << "First case " << first_case << std::endl;
-        std::cout << "Second case " << effort << std::endl;
-        */
-
-        // return minimum of the two efforts 
-        if (first_case > effort){
-            return effort;
-        }
-        else {
-            return first_case;
-        }
-
+        return min_effort;
     }
-
-
-
-
 };
 
 #endif

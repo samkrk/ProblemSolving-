@@ -76,3 +76,10 @@ smaller than 4, and each element and 5, if it's greater than 5.
 This sometimes works, but not every time. In some cases it's best to round down to 3 and 4 or 
 up again to 5 and 6. So I think I will just try several pairs of numbers, near the average, and 
 then return the lowest effort value. 
+
+I was going to convert the vector of strings, area, into a matrix, but I think it will be quicker 
+and easier if we just have a vector which contains the number of occurances of each digit. 
+
+Trouble Shooting:
+First upload had a compile fail due to using INT_MAX. Going to upload again using a value close 
+to the INT_MAX, i.e. 2147483600.

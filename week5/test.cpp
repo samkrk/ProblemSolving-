@@ -10,9 +10,13 @@ int main(void){
     
     std::vector<std::string> levels;
 
+       
+    levels.push_back("5781252");
+    levels.push_back("2471255");
+    levels.push_back("0000291");
+    levels.push_back("1212489");
 
-    levels.push_back("000009");
-    levels.push_back("100000");
+    
     
     
     std::cout << h.getMinimum(levels) << std::endl;
