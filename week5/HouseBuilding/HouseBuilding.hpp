@@ -29,7 +29,7 @@ class HouseBuilding{
         int effort = 0;
         switch (avg){
             case 0: // cannot do levels (-1, 0) so just skip, levels (0,1) will be less effort always
-                effort = INT_MAX;
+                effort = 2147483600;
                 break;
             default:
             for (int i = 0 ; i < digits.size() ; i++){
@@ -51,7 +51,7 @@ class HouseBuilding{
         effort = 0;
         switch (avg){
             case 9: // cannot do levels (9,10) so levels (8,9) will always be less effort
-                effort = INT_MAX;
+                effort = 2147483600;
             default:
             for (int i = 0 ; i < digits.size() ; i++){
                 if (i == avg || i == avg + 1){
