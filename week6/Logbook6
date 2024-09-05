@@ -1,0 +1,89 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+PROBLEM #1
+Good Hours
+
+Design ideas:
+For this problem I think the checks are simple enough since there are only three cases, so we can just test those by hand. I will define a helper function to increment the time by 1 second, which we can call in our main for loop for checking if its a good number. 
+
+Trouble Shooting:
+First submission took longer than 600 seconds to run. It passed all the available test cases when I tried it on my machine, but maybe some cases take longer. I cleaned up some of my code in the howMany method so hopefully its quick enough now.
+So after submitting again, the response timed out again. I did some debugging and it looks like my helper function is the problem. The way I was incrementing the time 
+was logically wrong, as I was checking if the second digit of hours was more than a 3, but it should have been if the total hours were more than 23. 
+
+Reflection:
+Passed all test cases. Dumb error led to the time outs which meant I wasted a lot of time waiting for gradescope. Should have caught the error when I was writing it 
+the first time. Pretty simple problem otherwise.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+PROBLEM #2
+Colorful Rabbits
+
+Design Ideas:
+So from looking at the provided examples, we can see that if a rabbit says there are n other rabbits of its colour, and we have n+1 rabbits also say n, we can add n+1 to the total number of rabbits. 
+I think I will try to use maps for this problem. So looping through the input array, and the elements in the array can be the keys. 
+We will increment the respective count if we encounter the key and then perform some calculations at the end to find the minimum. 
+
+Reflection:
+Passed all tests on first submission which is good. Feel like I can't really explain my reasoning very well for this question but it makes sense in my head anyay. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+PROBLEM #3
+Nice Or Ugly
+
+Design Ideas:
+So I guess for this problem, we can solve it pretty easily if there aren't any question marks in the input. 
+If there are question marks, we can try to make it UGLY by putting consonants in every position. 
+We can then try to make it not ugly by putting vowels in all the question marks. If its both ugly and not ugly, we can return 42. Otherwise we can return UGLY or NICE depending on what we got. 
+So I didn't realise that 3 vowels in a row make the word ugly, so we could potentially need a mix of vowels and consonants in order to make a word not ugly. 
+To fix this, I think I will make another helper function that we can call, which will try to fill the question marks with the correct letters to make the word NICE. 
+For this makeNice function, my options are to either have a series of smart if statements and checks to systematically make the word nice, or by using brute force to try every possible combination. 
+The issue with brute force here is imagine if we had an input of 50 consecutive question marks, it would take a very long time to check every combination. 
+I think a recursive brute force method will work, where we try a consonant and a vowel in the place of a question mark, checking if the word is then ugly, and repeating until there are no question marks left. 
+In the case where we reach the end, and the word is still not ugly, we can safely return NICE. 
+
+Trouble Shooting:
+So this passed 79/100 test cases. I think there is an error in my makeNice function. 
+The code i've written is pretty confusing and ugly but is essentially what I intended to do before, where we try a consonant and a vowel in place of the question mark, if either of these cases isn't UGLY, we call the function recursively. 
+
+So this next attempt unfortunately timed out, so I will have to rethink what's going on and make things more efficient. 
+
+Tried to simplify things and it worked with my own test cases but timed out in gradescope again. 
+I think the issue is, even if I find a NICE combination, the code is still trying every other combination as well, 
+but in reality, all we need is one NICE case and then we can leave everything. 
+
+For some reason that upload didn't register I'm not sure why. I think maybe because I had some debugging std::cout. I'll delete that line and try again. 
+
+So I've now passed 81/100 test cases and I honestly have no idea why it's not passing all of them. I can't see any reason why I can pass test cases like AA?QQQ?A?QQQ?A?QQQ?A??QQQ?A?QQQ?A?QQQ?A?QQQ?A?QQQQ,
+and not this: AA?ZPC?A?LSQ?A?RQG?A??YHQT??A?CCL?A?HLG?A?FFTW.
+So after much frustration I think I found the issue. When I check if a word is ugly, I needed to edit the logic in the case where the character was a question mark, and I needed to reset the consonant count and vowel counts back to zero.
+
+Reflection:
+So this finally worked and I passed all the test cases. This took a stupidly long time for such a small change and I'm now extremley annoyed. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+PROBLEM #4
+Jumpy Num
+
+Design Ideas:
+This problem sounds interesting because it's so simple to understand and the question page is only about 2 lines long. 
+I guess it's pretty easy to check if a number is jumpy or not, we just compare every adjacent element in the number and see if the difference between the digits is greater than 1. 
+Given we know how to check if its a jumpy number or not, we could then use brute force to try every possible number, incrementing a counter if it is. 
+However this will probably take a long time, especially for cases like 0 to 2 million, so we need to optimise. 
+For example look at the number 1136. Since the adjacent 1's dont differ by 2, we can just go straight to 1300, since every number between 1100 and 1299 is not a jumpy number. 
+This logic could be extended to any digit, potentially saving a lot of comparisons. 
+
+Reflection:
+So suprisingly this worked on the first upload which was good. 
+My algorithm wasn't perfect and there were definetley some more optimisations I know I could have added, but if this is good enought to pass all the test cases then its good enough for me. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+End of Week Reflection
+Problems 1 and 2 were both okay and I passed those relatively quickly. Problem 3 was 4* and this one took me a long time to implement. 
+What was annoying about this problem is that I think I knew what to do, but I was just struggling to code it. 
+Also I spent about an hour trying to figure out what was wrong when all I needed was about 2 more lines of simple code. 
+The 5* question, Problem #4, was the first question I've attempted of this difficulty. It didn't feel all that much harder than the 4* questions I've tried, but I think it required a little bit more maths for the optimisations.
+Overall I was happy to get some more harder problems done this week. 
