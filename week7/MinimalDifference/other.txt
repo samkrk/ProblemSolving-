@@ -1,0 +1,112 @@
+#ifndef MINIMALDIFFERENCE_HPP
+#define MINIMALDIFFERENCE_HPP
+
+#include <iostream>
+
+class MinimalDifference{
+public:
+    int getDigitSum(int X){
+        int temp = X;
+        int sum = 0;
+        while (temp > 0){
+            sum += temp % 10;
+            temp /= 10;
+        }
+        return sum;
+    }
+
+    int increment(int X, int B){
+        int order = 0;
+        int x = X;
+        int temp = X;
+        while (temp > 0){
+            if (temp % 10 != 9){ // if back digit is not 9
+                // if we have reached the front digit just add 1. 
+                if (temp <= 9){
+                    // std::cout << "Success" << std::endl;
+                    return X+1;
+                }
+                x += pow(10, order);
+                // std::cout << "new x" << x << std::endl;
+                if (x > B){
+                    return -1;
+                }
+                
+                return x++;
+            }
+            else {
+                temp /= 10;
+                order++;
+            }
+        }
+        if (x+1 <= B){
+            return X+1;
+        }
+        return -1;
+    }
+
+    int findNumber(int A, int B, int C){
+        if (C > A && C < B){
+            return C;
+        }
+
+        if (A == B){
+            return A;
+        }
+
+        // brute force time 
+        int c = getDigitSum(C);
+        int t = getDigitSum(A);
+        int minDigit = t;
+        int minInt = A;
+        bool flag = true;
+        int temp = A;
+        while (flag){
+            if (temp == -1){ // we exceeded B
+                break;
+            }
+            t = getDigitSum(temp);
+            if (t == c){
+                return temp;
+            }
+            if (std::abs(t-c) < minDigit){
+                //std::cout << "New min found" << std::endl;
+                minDigit = t;
+                minInt = temp;
+            }
+            // std::cout << "Called increment: ";
+            temp = increment(temp, B);
+            // std::cout << temp << std::endl;
+            // std::cout << "end of loop" << std::endl;
+        }
+        return minInt;
+    }
+
+    
+    
+
+};
+
+/*
+    
+
+    int rec(int A, int B, int C, int X){
+        // if X is out of bounds 
+        int d = getDigitSum(X); // digit sum of X
+        if (d == getDigitSum(C)){
+            return X;
+        }
+        int tempX = X; // X to be incremented or decremented 
+        if (d < C){
+            tempX = increment(X, B);
+            if (tempX == -1){ // if we can't get any closer return B 
+                return B;
+            }
+            return rec(A, B, C, tempX);
+        }
+        else return B;
+    }
+*/
+
+
+#endif

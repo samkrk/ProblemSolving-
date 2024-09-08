@@ -1,0 +1,97 @@
+
+This week I will try to solve some of the easier problems in order to practice my speed for the prac exam next week. 
+
+##########################################
+#     Problem 1 Minimal Difference       #
+##########################################
+
+Design Ideas:
+This problem is a little confusing to understand, but it sounds like we first need to create a method that caluclates the 'digit sum' of an int, which should be straight forward. 
+We could then use brute force to check the digit sum of every integer between A and B, but this would take too long. 
+We could first check if C is between A and B, because in this case we can just return C as our answer. 
+Also if A = B, then we have to return this value. 
+Perhaps we could use recursion for the remaning cases. Start at some number, A to begin with, and stuff it with as many zeros as possible (ensuring its within bounds still). If the resulting digit sum of this number is less than C, keep adding 1 to the back digit, until we get to 9 and then keep the nine there and repeat this process at the n-1 digit (n is the last digit here). Eventually this should produce the correct answer I think. 
+I couldn't really get this process to work and if I was doing this question in the prac exam I think I would have moved on a while ago. I'm just going to try this brute force method with a single check, where 
+
+Actually I think I've got something that works now. I was about to give up but then realised that I was pretty much there and just needed to brute force in my method I described above, where we just add one to each digit until it its all 9's except the front, then we increment the whole number by 1 in this case (eg, 1999 -> 2000 and 249999999 -> 25999999). This way while its still a brute force of sorts, it's a lot faster (I hope) since we are only checking a fraction of the numbers. 
+
+Trouble Shooting:
+Okay so I passed only 44/100 but I see where one error is anyway. I was incrementing the value before checking the first one, so I just need to swap that around. 
+
+Now I failed another case where the answer is 10000000 and I had some issues with logic in my increment function. Fixed by adding a check at the end of the function to see if we can add 1 to X before returning -1. 
+
+Okay So I failed some more test cases and I'm starting to think that this question is way too hard for 2*'s. Looking at the question description page I see now that the difference between A and B is actually guaranteed to be less than 100,000. This means that brute force will actually probably just work and i've wasted a lot of time on this question. Initially all I saw was that A B and C were between 0 and 1,000,000,000, so I discarded brute force as an option. But since using brute force we would only have to search 100,000 times at the most, it would probably work this way anyway. 
+
+Passed 76/100 cases now. Had some error with the way I was determining the new minimum values which is fixed now. 
+Passed 87/100. Another stupid error where I initialised a variable to the wrong value before starting my loop. 
+
+Reflection:
+This problem sucked. I read the question wrong to begin with and spent ages trying to implement this really confusing and complicated solution, which I didn't even need to complete the problem. Absolutley terrible way to start this weeks problems. Didn't really learn anything or try any new problem solving techniques. Just a tragic performance. 
+
+
+##########################################
+#    Problem 2 Very Interesting Movie    #
+##########################################
+
+Design Ideas:
+This problem seems more straightforward than the last. I think we can just loop through each character in each string, checking first if the seat is available (Y). If its available and we can book it and then mark the seat to the right N since we can't have students sitting next to eachother.
+
+Reflection:
+Felt very easy for a 3* problem. Only took about 5 minutes. Hopefully we get some questions like that in the prac exam. 
+
+##########################################
+#        Problem 3 Fair Workload         #
+##########################################
+
+Design Ideas:
+For a lot of the listed examples, often one cabinet has more files than all the other cabinets combined. In this case, someone will have to go through this large cabinet and this cabinet only, so this will be our answer. I suppose you could continue this logic for other cases, but instead of looking for the largest single cabinet, you find the largest of 2 adjacent cabinets. 
+So we find the largest number of files for k cabinets in a row, k goes from 1 to (N - no. of cabinets). 
+
+I don't think this would work unfortunately, but I do think recursion might work. If we split the array into either halves or thirds, depending on the number of workers, we could recursively call this with the subvectors and workers remaining. 
+So we first find the sum of the given vector. Then we go through the vector and find the index where if we split the vector in half, half the files are on one half and half the files are on the other. 
+We first have to check that the size of the arrays are not exceeded by the number of workers because two workers cannot work on the same cabinet. 
+
+Once again I think I commited to the wrong method here and after being able to solve the problems for an even number of workers, things just got too complicated if there was 3 workers for example. 
+
+So my next idea is to use some sort of greedy algorithm. We know the lowest possible answer is the largest element in the folders input, and the highest possible answer is the sum of all the folders. If we choose somewhere in the middle of these min and max values, say mid, we can check if we can assign the workloads with all workloads less than this value mid. We can use binary search to hone in on a value which should be the correct answer. 
+
+Reflection:
+Actually passed on the first upload which was good (didn't upload my previous ideas). Wasted a lot of time again trying to do some complicated method that wasn't neccesary. Really need to avoid doing this in the prac exams. Other than that it was good to be able to execute a greedy algorithm. I think the algorithm was greedy although I'm a bit unsure on what constitues a greedy algorithm/solution. 
+
+##########################################
+#       Problem 4 Lost Parentheses       #
+##########################################
+
+Design Ideas:
+There aren't a lot of examples for this problem, which is kind of making it a bit hard to see some kind of pattern and come up with a plan. One thing I can see, if if we have a - followed by a +, we will need to put parentheses around the number followed by the +. The same logic extends for multiple + signs. 
+I think it might be useful/easier to extract the numbers into a vector first, just for ease of opertaions, so I will do this first. 
+Now that we have the values in vectors, we can loop through the array, and once we encounter a negative number, we can sum up all the other positive numbers that come after it and add it too our total. 
+So I've got something that is able to pass all the available test cases, but I'm honestly not confident that it's going to pass all of them. Particularly if some solutions require you to consider nested brackets. I can't really think of any cases where that applies but if they are needed, my code will not give the correct solution. 
+
+Reflection:
+Well suprisingly it passed first try which is great. Really wasn't confident that it would work for every scenario. The hardest part about this question was extracting the digits from the string. Ended up using regex which I hadn't used before so it was good to get some experience with that function. 
+
+##########################################
+#       Problem 5 Talilulu Coffee        #
+##########################################
+
+Design Ideas:
+So initially I thought this problem sounded too easy, since in the first couple of examples, if we just always select the smallest tip, we are guaranteed to get profit from all the tips. However this is only true in some cases. Specifically, the cases where all the elements of tips are greater than the length of tips. 
+Maybe we can look at each decision as the amount of profit gain vs the profit lossed. So for example if we have {7, 8, 6, 9, 10} and we choose 6 at t = 0, we gain a profit of 6, and a loss of 4 since the value of the rest of the tips went down 1. Since we still have a profit here, we can justify choosing this number. 
+Actually I think it's better to always pick the customer with the largest pnl value.
+
+Trouble Shooting:
+First upload failed due to undeclared use of INT_MAX and INT_MIN. Will change to just large and very negative integers instead. 
+Second upload I passed 74/100 but an exception occured. I think it's probably due to the loop not exiting and causing some overflow, so I will add some more checks to make sure it breaks. Also could be because the size of tips is 0 and in this case we just need to return 0.
+
+Reflection:
+Passed on the third upload. Pretty happy with this solution since I feel like coming up the idea of the profit and loss thing wasn't really that obvious. 
+
+##########################################
+#         End of Week Reflection         #
+##########################################
+
+Just realised that I've been uploading all of the previous weeks code on each upload which I got marked down for before. On my machine, I removed all the other folders and thought I uploaded it to github but clearly it didn't work. I'm sure I did this actually so I really don't know why the old weeks folders are still there. 
+So I think what I needed to do was say git add -u so that git tracks the deletions as well. 
+
+Other than that this week was pretty good. Was happy with how I did on problems 2, 4 and 5, and If I can solve the problems with that pace in the prac exam I should do well. Problems 1 and 3 took me a long time which wasn't great. I really just misread the first question and probably could have done it a lot faster if I just commited to the brute force idea at the start. Question 3 was the one where you had to do the greedy algorithm and that was pretty confusing and I definetley need to do some more practice in these types of questions to get confident. 
