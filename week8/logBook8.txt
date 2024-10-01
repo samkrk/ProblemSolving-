@@ -1,0 +1,120 @@
+
+###########################
+#    Problem 1 Thimbles   #
+###########################
+
+Design Ideas:
+This problem seems pretty straight forward. We first extract the elements of the swapped thimbles, say 1 and 2, and we have some variable that contains the position of the thimble currently. If the thimble is under either of these extracted numbers, we swap the position of the thimble to the other element. 
+
+Reflection:
+Nice easy warm up question. Only took about 5 minutes and didn't have any errors or anything. 
+
+
+###########################
+# Problem 2 Hands Shaking #
+###########################
+
+Design Ideas:
+Slightly unsure about what some cases would result in here. If we have 3 business men, or any odd number for that matter, would the answer always be zero since there will be 1 person left out. For now I'll assume that this is the case. 
+I think we can use recursion and memoisation here. If we have an 8 person table, with the people labeled 1 through to 8, we can examine all of the first persons options to find the solution. Person 1 can shake hands with 2,4,6 or 8. In the cases where they shake hands with person 2 or 8, we are left with a 6 man table and we can add 2 * f(6) to our solution. If 1 shakes hands with 4 or 6, we then have a 2 man table and a 4 man table in both cases, so we can add 2 * (f(2) * f(4)) to our answer. This would leave us with 2*5 + 2*2 = 14 which is the correct answer. 
+
+Trouble Shooting:
+Passed 80/100 test cases on first upload. Failed on case n = 42. Since the code managed to pass the majority of the cases, there is probably some weird error happening with the use of longs. 
+It's probably because my memoisation vector is using type int when it should be type long for these large cases. 
+
+Uploaded again and failed the last case where n = 50. Just needed to extend my memoisation vector by 1 so that we don't get an exception. 
+
+Reflection:
+Pretty good problem. Had to draw up some cases to find the pattern. Once I saw how we could use recursion and memoisation the implementation was pretty straight forward which was good. Very similar to the lock question in a previous week but I think that most memoisation problems would be similar in this way. 
+
+
+###########################
+#   Problem 3 Rock Star   #
+###########################
+
+Design Ideas:
+Just looking at the last example, we can play all the ff songs first, then play the fs and sf songs alternating until one of them runs out, finishing with the ss songs. Actually the way this really happens is 192 ff songs, 1 fs, 249 ss, 1 sf, and then the remaining 278 sf and fs songs. So 192 + 1 + 249 + 1 + 278 + 278 = 999. So we go ff -> 1 fs -> ss -> sf/fs. 
+This should work in the case where we don't have any zeros or small values that mean we can't traverse between ff and ss songs. 
+
+Weird casess: 
+- If fs is 0, we still have to play ff first, so here the answer is actually just ff since we can't every leave the fast songs. 
+- If ff and fs are both 0, we just return ss + 1 if sf != 0, or ss if sf = 0.
+
+Trouble Shooting:
+Got 69/100 on the first upload. Failed one of the example cases which was dumb because I tested it earlier and it worked and then changed some code and now it doesn't. The case is 1,2,1,1 and the issue was caused here because I was decrementing sf by 1 and then finding the min of sf and fs and multiplying by two, which in this case was zero, so I was off by one. I will add a check so that this case works, but I think there will be more errors in similar cases, that result in the answer being off by one. 
+
+As suspected on the second upload we did a little bit better, 73/100, but failed a case by 1, recieving 1475 instead of 1476, with input (304,711,174,823). Added another check which fixed this case. 
+
+95/100 now. One more case I need to fix which involves fs < sf and ss == 0. 
+
+Actually passed 99/100 somehow, and funny enough the case I failed is (1,1,1,1) and its producing 5 instead of 4. 
+
+Reflection:
+Finally passed all the cases. Probably not a great solution but it worked and it didn't take that long to implement either. Feels like something I would do in the practice exam, just getting it to work for most of them and then refining the logic so that it can work for all of them. Not a bad strategy in cases where time is important and partial marks are rewarded. 
+
+
+#################################
+#  Problem 4 Problems To Solve  #
+#################################
+
+Design Ideas:
+So of the problems we have solved, we have a max and a min pleasantness. We should probably scan the array first to determine if the difference between the max and the min is greater than or equal to variety, since if its not, then we know we have to solve all the problems. 
+If we find some problems with a big enough variety, we want to make sure its the optimal problems to solve, so closest to the beginning. 
+We could consider the first problem first, and then scan the rest of the array, seeing if abs(problem(0) - problem(i)) >= variety. 
+
+Actually I think it would be better to just use brute force, using a nested for loop, checking each pair of problems, and seeing if the difference between them is greater or equal to variety. If this is the case, we can calculate how many problems we would have to solve using some formula. For example if we had problems i and k, the number of problems we would have to solve is 
+0 + 2 + 4 + ... i + i+2 + i+4 + ... + k. We can then have some global min value, and if its less than some min, we can update this and return the min for all the values. 
+
+Trouble Shooting:
+First upload we got 78/100 which is pretty good for a first upload. Think I just have some small errors with calculating the first i problems we have had to do. 
+
+Second upload we got 99/100, failed the case (49 33 7 4 32) and 40 variety. Had some error in my initial check to find the max and min elements in the array. Fixed it now so hopefully should pass all the cases. 
+
+Now it's actually not working at all and I didn't even see what we got so something serious has gone wrong here. Actually I think I just needed to comment out my debugging prints. 
+
+Reflection:
+Finally we passed all the cases. Actually pretty happy with how this problem went. Did it pretty quickly for a 4* problem and the errors I had were just small fixes I had to make. 
+
+
+##################################
+#       Problem 5 Fill Box       #
+##################################
+
+Design Ideas:
+This problem looks quite hard. 
+After some thinking, what i've come up with is something like this. 
+First split the input, say a*b*c into (B1+r1)(B2+r2)(B3+r3), where B1-3 are the largest possible powers of 2, such that r1 is positive and B1+r1=a. From here, we have a bunch of smaller product that we need to sum up. i.e. B1*B2*B3 + ar*br*cr + B1*B2*ar + ... 
+Now for each of these elements, we find the smallest B value (if there isn't a B value we call recurisvley). 
+Say we have 4*8*8, so we choose 4 as our base. 4*8*8 = 4 *4*4*4, so we need four 4 sized cubes. If we only have 3 four sized cubes for example, we will use those 3, and then we will need 8 2*2*2 sized cubes to fill the remainder. If we can't get these 8 2 sized cubes we will have to use 1 by 1's, and still if we don't have enough we will have to return -1. 
+
+It's been two weeks since I've done any work for this course, and after reading my design ideas above, I think I will try a different approach but I will leave that in there anyway. 
+I think this problem can be split into two parts. The first part is figuring out how many cubes you need to fill the box, regardless of how many we have available. The second part is then, determining the minimum amount of cubes we need, given how many we have available to us. 
+
+To first figure out how the ideal number of cubes, we can examine an example to see the pattern. 
+Consider 5x5x9. We want some goal size, which is powers of 2, so the goal size is 4x4x8, and this is what we want to end up with, along with a bunch of left overs. 
+So 5x5x9 = 4x4x8 + 1x5x9 + 1x4x9 + 1x4x4. Since these remaining terms are all multiplied by 1, we will just need 5x9 + 4x9 + 4x4 one by one cubes. We can call these functions recursively, so in the case that the terms are actually not multiplied by 1, say we get 2x4x9, we can just call the function again and repeat the process. 
+As for the 4x4x8 term, or whatever the big box is, if the width, length and height are the same, we can just add 1 to the vector at this position, so if we have 4x4x4, our ideal vector will have 1 4x4x4 cube. If we have 4x4x8 for example, we will find the minimum (4), and calculate the number of instances, in this case 2, and we can add 2 to the corresponding index in the ideal vector. 
+
+Once we get our ideal cube vector, we can loop through the available cubes array, and determine if we have enough available cubes. If we don't, we simply add 8*diff to the number of cubes we need in the next size down. At each index we add the number of cubes we need and return this as our answer. 
+
+Trouble Shooting:
+Got 54/100 for the first attempt. Quick fix needed when adding on the difference when we don't have enough cubes of a given size. 
+
+67/100 for the second attempt. Getting a weird result where my function is returning -656118636 instead of -1. I think this could be some integer overflow business which is really annoying. To try and fix this I will just add a check so that if the answer is negative we will just return -1. 
+
+92/100 for third attempt. More integer overflow errors it looks like, so I will just move the negative check to inside the for loop, that way as soon as the total number of cubes goes negative, we can just return -1, since the available number of cubes is always less than 10^6. 
+
+90/100 for the fourth attempt. Failed the case 524288x524288x524288 with 1 1x1 cube available. My method produced 0 instead of -1. To fix this, I can just add a check at the end which catches if the total is 0, just return -1 since 0 isn't a valid answer anyway. 
+
+95/100 for the fifth attempt. Just endless dumnb answers due to the integer overflows. Added another check at the end where if the answer is less than or equal to 0, we return -1. 
+
+Reflection:
+Finally passed all cases on the sixth attempt. Very happy to get this one down though. My solution was pretty confusing and I think the way I was naming all my variables and functions was very unclear and messy, but at least it worked. 
+
+##########################################
+#         End of Week Reflection         #
+##########################################
+
+Took a big break halfway through these questions, but managed to come back and do the 5* question which I'm very happy with because I remember giving up on this question before the break. Problem 1 was very simple so not much to say about that one, but problem 2 was interesting and I had to break out the pen and paper to come up with a solution. 
+For most of these questions I actually had to write down my thoughts on paper to try and see the pattern/process for solving the problem.
+I enjoy using pen and paper to analyse these problems because it feels like you're really thinking hard and its not all about the coding, but also just pure problem solving, which I enjoy. 
