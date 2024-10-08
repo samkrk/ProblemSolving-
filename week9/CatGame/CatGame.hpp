@@ -88,9 +88,11 @@ class CatGame{
 
             if (right_dif > left_dif){
                 new_coords.at(i) = left_option;
+                left_most = left_option;
                 continue;
             } else {
                 new_coords.at(i) = right_option;
+                right_most = right_option;
                 continue;
             }
         }

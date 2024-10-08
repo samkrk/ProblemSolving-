@@ -11,3 +11,5 @@ In the case where the distance between the two furthest apart cats is less than 
 
 Trouble Shooting: 
 Passed 70/100 for the first attempt. Think I was missing a continue; in my code so will add that and try again. 
+
+Passed 75/100 with that change. Added another very small change which will hopefully fix something. 
