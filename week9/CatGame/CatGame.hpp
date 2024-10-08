@@ -80,6 +80,7 @@ class CatGame{
             }
             if (right_option < right_most){
                 new_coords.at(i) = right_option;
+                continue;
             }
             
             int left_dif = std::abs(left_most - left_option);
@@ -87,8 +88,10 @@ class CatGame{
 
             if (right_dif > left_dif){
                 new_coords.at(i) = left_option;
+                continue;
             } else {
                 new_coords.at(i) = right_option;
+                continue;
             }
         }
 

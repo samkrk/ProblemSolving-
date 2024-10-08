@@ -8,3 +8,6 @@ If the distance between those two is less than the int X, then we move them clos
 if not, then we have to move all of the cats in one direction so we can return right_most - left_most.
 
 In the case where the distance between the two furthest apart cats is less than X, once we move those two cats closer together, we then go through the whole array, and move the cats either left or right, to whatever the closest of the furthest away cats is. Once we have gone through the array, we return the new_right_most - new_left_most.
+
+Trouble Shooting: 
+Passed 70/100 for the first attempt. Think I was missing a continue; in my code so will add that and try again. 
