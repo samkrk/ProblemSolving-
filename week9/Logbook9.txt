@@ -1,0 +1,10 @@
+###########################
+#    Problem 1 Cat Game   #
+###########################
+
+Design Ideas:
+So from the initial array, we can find the left most coordinate and the right most coordinate. 
+If the distance between those two is less than the int X, then we move them closer together, 
+if not, then we have to move all of the cats in one direction so we can return right_most - left_most.
+
+In the case where the distance between the two furthest apart cats is less than X, once we move those two cats closer together, we then go through the whole array, and move the cats either left or right, to whatever the closest of the furthest away cats is. Once we have gone through the array, we return the new_right_most - new_left_most.
