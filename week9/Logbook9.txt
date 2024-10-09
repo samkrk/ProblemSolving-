@@ -13,3 +13,13 @@ Trouble Shooting:
 Passed 70/100 for the first attempt. Think I was missing a continue; in my code so will add that and try again. 
 
 Passed 75/100 with that change. Added another very small change which will hopefully fix something. 
+
+Passed 78/100 now. I think I will have to change my design if I want to get 100 here because something is very wrong. 
+
+New Design Ideas: 
+So now I'm thinking if we had could draw all the cats on a line from the left most cat to the right most cat, we could divide the line into segments, with all the cats in one half moving to the right and the other half where the cats in that segment all move to the right. 
+Perhaps the easiest way to figure out where to draw this segment would just be brute force. 
+So we have the left most cat and the right most cat, then for every cat in between, we try moving all cats to the left of some cat at index i to the right, and the rest of the cats (including cat at i) to the right of this cat to the left. 
+We would only need to calculate either the right_most - left_most or right_most - i_left, and our answer for that attempt would be the greater of those two values. We can then try every other cat and return the smallest value we find. 
+
+Actually I think it would be easiest to sort the array first, since now we know the order of the cats and we can easily find some of these values. 
