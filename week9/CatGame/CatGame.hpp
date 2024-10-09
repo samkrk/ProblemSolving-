@@ -9,7 +9,7 @@ class CatGame{
     public:
 
     int get_left_most(std::vector<int> coordinates){        
-        int min = 0;
+        long min = 1000000000;
         for (int i = 0 ; i < coordinates.size() ; i++){
             if (coordinates.at(i) < min){                
                 min = coordinates.at(i);
@@ -19,7 +19,7 @@ class CatGame{
     }
 
     int get_right_most(std::vector<int> coordinates){
-        int max = 0;
+        long max = -1000000000;
         for (int i = 0 ; i < coordinates.size() ; i++){
             if (coordinates.at(i) > max){            
                 max = coordinates.at(i);
@@ -42,20 +42,21 @@ class CatGame{
             return coords.back() - coords.front();
         }
 
-        int min_dif = 10000000001;
-        int dif = 0;
+        long min_dif = 10000000001;
+        long dif = 0;
         std::vector<int> temp(coords.size() ,0);
 
         // Move everything to the left to begin with. 
         for (int i = 0 ; i < temp.size() ; i++){
             temp.at(i) = coords.at(i) - X;
         }
-
+        
         // move one more cat to the right 
         for (int i = 0 ; i < coords.size() ; i++){
             temp.at(i) += 2*X;
 
             dif = get_right_most(temp) - get_left_most(temp);
+            
             if (dif < min_dif){
                 min_dif = dif;
             }

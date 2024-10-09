@@ -26,3 +26,5 @@ Actually I think it would be easiest to sort the array first, since now we know 
 
 Trouble Shooting:
 Got some error using INT_MAX on that attempt so will remove that and try again. 
+
+Got 72/100 now, I see I have an error in my functions for finding the left most and right most cats so will fix that and I think it should work now. 
