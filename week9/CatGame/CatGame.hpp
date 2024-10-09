@@ -42,7 +42,7 @@ class CatGame{
             return coords.back() - coords.front();
         }
 
-        int min_dif = INT_MAX;
+        int min_dif = 10000000001;
         int dif = 0;
         std::vector<int> temp(coords.size() ,0);
 

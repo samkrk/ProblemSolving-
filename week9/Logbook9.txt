@@ -23,3 +23,6 @@ So we have the left most cat and the right most cat, then for every cat in betwe
 We would only need to calculate either the right_most - left_most or right_most - i_left, and our answer for that attempt would be the greater of those two values. We can then try every other cat and return the smallest value we find. 
 
 Actually I think it would be easiest to sort the array first, since now we know the order of the cats and we can easily find some of these values. 
+
+Trouble Shooting:
+Got some error using INT_MAX on that attempt so will remove that and try again. 
