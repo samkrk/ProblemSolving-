@@ -1,0 +1,110 @@
+###########################
+#    Problem 1 Cat Game   #
+###########################
+
+Design Ideas:
+So from the initial array, we can find the left most coordinate and the right most coordinate. 
+If the distance between those two is less than the int X, then we move them closer together, 
+if not, then we have to move all of the cats in one direction so we can return right_most - left_most.
+
+In the case where the distance between the two furthest apart cats is less than X, once we move those two cats closer together, we then go through the whole array, and move the cats either left or right, to whatever the closest of the furthest away cats is. Once we have gone through the array, we return the new_right_most - new_left_most.
+
+Trouble Shooting: 
+Passed 70/100 for the first attempt. Think I was missing a continue; in my code so will add that and try again. 
+
+Passed 75/100 with that change. Added another very small change which will hopefully fix something. 
+
+Passed 78/100 now. I think I will have to change my design if I want to get 100 here because something is very wrong. 
+
+New Design Ideas: 
+So now I'm thinking if we had could draw all the cats on a line from the left most cat to the right most cat, we could divide the line into segments, with all the cats in one half moving to the right and the other half where the cats in that segment all move to the right. 
+Perhaps the easiest way to figure out where to draw this segment would just be brute force. 
+So we have the left most cat and the right most cat, then for every cat in between, we try moving all cats to the left of some cat at index i to the right, and the rest of the cats (including cat at i) to the right of this cat to the left. 
+We would only need to calculate either the right_most - left_most or right_most - i_left, and our answer for that attempt would be the greater of those two values. We can then try every other cat and return the smallest value we find. 
+
+Actually I think it would be easiest to sort the array first, since now we know the order of the cats and we can easily find some of these values. 
+
+Trouble Shooting:
+Got some error using INT_MAX on that attempt so will remove that and try again. 
+
+Got 72/100 now, I see I have an error in my functions for finding the left most and right most cats so will fix that and I think it should work now. 
+
+Reflection:
+This problem took a really long time and I was pretty confused as to why my first method wasn't working.
+Just happy to be done with it at this point. 
+
+
+##############################
+#   Problem 2 Cell Removal   #
+##############################
+
+Design Ideas:
+This is an interesting problem as I don't think I've attempted a problem involving binary trees in this course so far. 
+I think I could just turn the input into a binary tree and then delete the given node, and then count how many leaf nodes we have, but there might be an easier way to solve this without doing all that work.
+
+So the array will look something like: {-1,0,0,2,2,4,4,6,6}. In this example where the fourth node is deleted, we obviously need to delete the children of node 4 as well. And then we look at these indexes where the parent is 4, i.e. 5 and 6, and we delete them as well. 
+So clearly we can use recursion to delete these nodes and that shouldn't be too hard. 
+
+Once we have deleted all the nodes, we need to count how many leaf nodes there are. 
+We can do this by checking if each element in the array has any children, so if we look at array[1], we check if any values in the array[i] == 1. If there are none, then we add 1 to our count and move on, if there are children, then we move on to the next value. 
+
+Okay so i couldn't quite get this to work for all the examples on the main page, so I will change things up slightly. I will use an adjacency list to keep track of the children for each node. Then I will recursivley delete the given node and its children, and finally I will could up the number of leaf nodes by checking if the column in the adjacency array is empty as this signifies no children. 
+
+Reflection:
+Passed on the first upload which is good, but this problem still took a really long time. Really hope these next few questions will be easier because this is taking me too long this week. 
+
+
+##############################
+#   Problem 3 Cube Stickers  #
+##############################
+
+Design Ideas:
+This problem looks pretty interesting. I'm not exactly sure what type of problem it is. 
+If we have 6 distinct colours then we can always return YES. If there are less than 3 distinct colours we can return no. 
+
+I think we could maybe use a map here, where the key is the colour and the data is how many stickers of that colour we have. 
+
+Also I think if there are at least 5 distinct colours, we can always return YES. 
+This just leaves the cases where there are 3 and 4 distinct colours. 
+If there are 3 distinct colours, there needs to be at least 2 of each for it to be possible. 
+If there are 4 distinct colours, there needs to be at least 2 stickers of 2 of these colours. 
+
+Reflection:
+Passed on the first attempt which is good. Very happy with this problem since it didn't take long and I dont really use maps that often so it was good to quickly get this one done. 
+
+
+##############################
+#   Problem 4 Erdos Number   #
+##############################
+
+Design Ideas:
+So we are told that this is a graph problem. I have not yet done a graph problem so this might be a bit difficult. 
+
+I guess each author is a node with some unkown value to begin with (except for ERDOS as his is always 0).
+Then each node is connected to other nodes. 
+
+I guess the first step in this problem is to first assemble the graph by looking through the input and adding in the edges. This graph would be an undirected and unweighted graph I think, so maybe we could store the edges in an adjacency list. 
+
+I think I will make the adjacency list a map with the key being the authors name, and the value can be the list of all the authors they have a connection with. 
+To get everyones number we can start at the ERDOS key, and give every one he has a connection with a score of 1. Then we go through all of their connections and if they don't already have a number assigned to them we give them a value of the previous number + 1. 
+
+Trouble Shooting:
+Got 33/100 on the first attempt which is not good, but I feel like I'm not actually that far away from it working. In the test case that failed that I can see, one of the publications was just a solo author, and that was not printed in my output. 
+
+I think I need to change the way I calculate the distance. A BFS should work for this problem so I will try to implement this. 
+
+Got 98/100 now which is kind of annoying. Actually failed the same test as before, where we have a solo author. Just needed a quick fix. Should be working now.
+
+Reflection:
+Really interesting problem. Used sets, queues and maps which is always fun and i've never had to use all three before in a single problem. Definetley need more practice with these graph problems but I quite enjoyed it. 
+
+
+##############################
+#   End of Week Reflection   #
+##############################
+
+Took a long time to get this weeks problems done, maybe a little bit out of practice after the break. 
+Problems 1 and 2 took me a long time and I was pretty confused why they weren't working. Problem 3 was easy and didn't take much time to solve. Problem 4 was hard but enjoyable, and I hope I can get some more practice with these graph problems soon. 
+
+
+
