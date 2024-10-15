@@ -22,3 +22,15 @@ If we have a variable that can keep track of the time, we can just go through th
 
 Okay so maybe I wont use queues for this problem because I think we can just use the vectors to make it simple. 
 In the example with arrivals at {3,3,9} and service of {2,15,14}, the first customer is served at 3 seconds and waits no time, then we add on the service time, so t = 5, and now since t > arrival[1], wait time = t - arrival[1] = 2. Then we serve the next customer and it takes 15 seconds so t = 20, and since t > arrival[2], wait_time = t - arrival[2] = 11 and this is our maximum wait time. 
+
+Reflection:
+Passed all the tests on the first go which is good. Was a bit distracted for this one so the thoughts about the queues was a bit stupid. 
+
+
+#################################
+#     Problem 3 Bridge  Sort    #
+#################################
+
+Design Ideas:
+This problems seems pretty easy in the sense that you could just write a bunch of if else statements to get it right. I'm not really sure which data stuctures I want to use to sort the hand, but I think I will use a map to seperate the cards into suits. From there once we know a cards suit, we need to store its value in something. We could use a string or a vector or maybe a linked list so that we could maintain the correct order. 
+What I think I will do is in each suit in the map, I will create a vector of ints which represents the order of the cards. So cards 2 to 9 will be from indexes 0 to 7 in the vector,T = 9, J = 9, Q = 10, K = 11 and A = 12. Once the cards have been inserted in the correct order we just print the suits in the correct order, and the numbers from the vector (converted back to chars). 

@@ -1,26 +1,17 @@
 
 #include "DifferentStrings/DifferentStrings.hpp"
 #include "BigBurger/BigBurger.hpp"
+#include "BridgeSort/BridgeSort.hpp"
 #include <iostream>
 
 int main(void){
 
-    BigBurger b;
+    BridgeSort b;
 
-    std::vector<int> arrival = {3,3,9};
-    std::vector<int> service = {2,15,14};
-    std::cout << b.maxWait(arrival,service) << std::endl; // 11
+    std::string hand = "HAH2H3C4D5ST";
+    std::cout << b.sortedHand(hand) << std::endl; // C4D5H2H3HAST
 
-    arrival = {182};
-    service = {11};
-    std::cout << b.maxWait(arrival,service) << std::endl; // 0
-
-    arrival = {2,10,11};
-    service = {3,4,3};
-    std::cout << b.maxWait(arrival,service) << std::endl; // 3
-
-    arrival = {2,10,12};
-    service = {15,1,15};
-    std::cout << b.maxWait(arrival,service) << std::endl; // 7
+    hand = "H3SAHA";
+    std::cout << b.sortedHand(hand) << std::endl; // H3HASA
 
 }
