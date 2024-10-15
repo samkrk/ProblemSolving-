@@ -14,4 +14,6 @@ int main(void){
     hand = "H3SAHA";
     std::cout << b.sortedHand(hand) << std::endl; // H3HASA
 
+    hand = "C2C3C4C5C6C7C8C9CTCJCQCKCA";
+    std::cout << b.sortedHand(hand) << std::endl; // C2C3C4C5C6C7C8C9CTCJCQCKCA
 }

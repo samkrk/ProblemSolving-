@@ -34,3 +34,6 @@ Passed all the tests on the first go which is good. Was a bit distracted for thi
 Design Ideas:
 This problems seems pretty easy in the sense that you could just write a bunch of if else statements to get it right. I'm not really sure which data stuctures I want to use to sort the hand, but I think I will use a map to seperate the cards into suits. From there once we know a cards suit, we need to store its value in something. We could use a string or a vector or maybe a linked list so that we could maintain the correct order. 
 What I think I will do is in each suit in the map, I will create a vector of ints which represents the order of the cards. So cards 2 to 9 will be from indexes 0 to 7 in the vector,T = 9, J = 9, Q = 10, K = 11 and A = 12. Once the cards have been inserted in the correct order we just print the suits in the correct order, and the numbers from the vector (converted back to chars). 
+
+Trouble Shooting:
+Passed 42/100 for the first attempt. Had some small error when I was converting from char to ints. Should have been a '2' instead of a '0'. 

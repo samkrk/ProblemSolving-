@@ -21,7 +21,7 @@ class BridgeSort{
                 case 11: card = 'K'; break; 
                 case 12: card = 'A'; break; 
                 default:
-                    card = '0' + i;
+                    card = '2' + i;
                     break;
                 }
                 res.push_back(suit);
@@ -51,7 +51,7 @@ class BridgeSort{
             case 'K': index = 11; break;
             case 'A': index = 12; break;
             default:
-                index = (hand[i+1]) - '0';
+                index = (hand[i+1]) - '2';
                 break;
             }
 
