@@ -8,4 +8,17 @@ If A is entirely in B, we can always append or prepend the neccesary letters to 
 
 Then to find every other case, we can slide A across B, find the index where we should place A to maximise the number of alligning characters, and then just return how many characters dont align in this best case. 
 
+Reflection: 
+Passed on the first upload which is good. No issues with this problem, went down pretty easily. 
 
+
+#################################
+#     Problem 2 Big Burger      #
+#################################
+
+Design Ideas:
+It sounds like we should uses queues for this problem. 
+If we have a variable that can keep track of the time, we can just go through the queue of people and keep track of who has waited the longest to be served. 
+
+Okay so maybe I wont use queues for this problem because I think we can just use the vectors to make it simple. 
+In the example with arrivals at {3,3,9} and service of {2,15,14}, the first customer is served at 3 seconds and waits no time, then we add on the service time, so t = 5, and now since t > arrival[1], wait time = t - arrival[1] = 2. Then we serve the next customer and it takes 15 seconds so t = 20, and since t > arrival[2], wait_time = t - arrival[2] = 11 and this is our maximum wait time. 
