@@ -1,0 +1,11 @@
+#################################
+#  Problem 1 Different Strings  #
+#################################
+
+Design Ideas:
+So firstly, if A and B are the same length there is nothing we can do, so we return the number of different characters in the two strings. 
+If A is entirely in B, we can always append or prepend the neccesary letters to have a difference of zero. 
+
+Then to find every other case, we can slide A across B, find the index where we should place A to maximise the number of alligning characters, and then just return how many characters dont align in this best case. 
+
+

@@ -1,6 +1,0 @@
-To update 
-cd to ProblemSolving- 
-git add . 
-git commit -m "(message)"
-git push origin (branch name)
-
