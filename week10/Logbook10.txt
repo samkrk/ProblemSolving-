@@ -75,5 +75,18 @@ Add it to a deleted roads list.
 Repeat this process for all occupied towns, until DFS returns and there are no occupied towns connected to the main occupied town. During this DFS, if you are about to go down a road that has been deleted, do not go down that road. 
 Return the cost of all the deleted roads. 
 
+Reflection:
+Passed on the first upload suprisingly. That took a really really long time. More time than all the previous problems combined. I think I hate graph problems now. A really hard but interesting problem. 
+What I find interesting about this problem is that it's easy to see the solution just by looking at the graph, but then when you actually try to code the solution, it gets very confusing very quickly. 
+I found myself bouncing around the code, jupming to different segments when something happens here or something else happens there. Just happy to be done with that problem. 
 
 
+
+#################################
+#       Weekly Reflection       #
+#################################
+
+Think I passed all the problems on the first or second upload this week which is pretty good. Really struggled very badly with the last graph problem and I absolutely need to get better at these types of problems if I want to do well in this last prac exam. 
+Question 1 was fine and I was pretty happy with my idea to 'slide' A across B. 
+Question 2 was pretty simple and just by writing down an example on paper it became pretty clear what we had to do to solve this. 
+Question 3 was also pretty easy and just required some switch cases and nothing fancy. 
