@@ -37,3 +37,43 @@ What I think I will do is in each suit in the map, I will create a vector of int
 
 Trouble Shooting:
 Passed 42/100 for the first attempt. Had some small error when I was converting from char to ints. Should have been a '2' instead of a '0'. 
+
+Reflection:
+Passed all tests on the second attempt which I'm happy with. Was able to quickly find the error in my bug as well which is good. Pretty basic problem with not many advanced techniques but maybe I solved it incorrectly. 
+
+
+#################################
+#     Problem 4 Block Enemy     #
+#################################
+
+Design Ideas:
+This problem seems pretty challenging. I guess the first this we should probably do it extract the inputs and place them in easier to work with data structures. 
+
+I guess in terms of graph theory, what we essentially want is to split the occupied towns into disjoint sets, so that each occupied town is in its own set (for the cheapest price anyway). 
+
+Okay so here is my plan. 
+    Assemble my graph from the input 
+    For every occupied town, 
+        Do a depth first search
+            if we hit another occupied town 
+                remove the cheapest road between these two 
+                start the dfs again 
+            otherwise do nothing and go to next occupied town 
+
+
+New plan. Don't even need to convert the input into a different structure for this approach I think. 
+So we just go through each connection in the input. 
+We check if both of the towns in this connection are occupied, if they are, we add the cost and put them in seperate sets. 
+To begin with, each town is the parent of itself, and 
+
+We can easily remove direct connections between occupied towns. 
+
+Okay new plan.
+Start at an occupied town. Do DFS until you reach another occupied town. Keep track of the path you took to get this is occupied town. 
+Delete the cheapest road between the two towns. 
+Add it to a deleted roads list. 
+Repeat this process for all occupied towns, until DFS returns and there are no occupied towns connected to the main occupied town. During this DFS, if you are about to go down a road that has been deleted, do not go down that road. 
+Return the cost of all the deleted roads. 
+
+
+
