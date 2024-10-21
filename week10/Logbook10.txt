@@ -1,0 +1,92 @@
+#################################
+#  Problem 1 Different Strings  #
+#################################
+
+Design Ideas:
+So firstly, if A and B are the same length there is nothing we can do, so we return the number of different characters in the two strings. 
+If A is entirely in B, we can always append or prepend the neccesary letters to have a difference of zero. 
+
+Then to find every other case, we can slide A across B, find the index where we should place A to maximise the number of alligning characters, and then just return how many characters dont align in this best case. 
+
+Reflection: 
+Passed on the first upload which is good. No issues with this problem, went down pretty easily. 
+
+
+#################################
+#     Problem 2 Big Burger      #
+#################################
+
+Design Ideas:
+It sounds like we should uses queues for this problem. 
+If we have a variable that can keep track of the time, we can just go through the queue of people and keep track of who has waited the longest to be served. 
+
+Okay so maybe I wont use queues for this problem because I think we can just use the vectors to make it simple. 
+In the example with arrivals at {3,3,9} and service of {2,15,14}, the first customer is served at 3 seconds and waits no time, then we add on the service time, so t = 5, and now since t > arrival[1], wait time = t - arrival[1] = 2. Then we serve the next customer and it takes 15 seconds so t = 20, and since t > arrival[2], wait_time = t - arrival[2] = 11 and this is our maximum wait time. 
+
+Reflection:
+Passed all the tests on the first go which is good. Was a bit distracted for this one so the thoughts about the queues was a bit stupid. 
+
+
+#################################
+#     Problem 3 Bridge  Sort    #
+#################################
+
+Design Ideas:
+This problems seems pretty easy in the sense that you could just write a bunch of if else statements to get it right. I'm not really sure which data stuctures I want to use to sort the hand, but I think I will use a map to seperate the cards into suits. From there once we know a cards suit, we need to store its value in something. We could use a string or a vector or maybe a linked list so that we could maintain the correct order. 
+What I think I will do is in each suit in the map, I will create a vector of ints which represents the order of the cards. So cards 2 to 9 will be from indexes 0 to 7 in the vector,T = 9, J = 9, Q = 10, K = 11 and A = 12. Once the cards have been inserted in the correct order we just print the suits in the correct order, and the numbers from the vector (converted back to chars). 
+
+Trouble Shooting:
+Passed 42/100 for the first attempt. Had some small error when I was converting from char to ints. Should have been a '2' instead of a '0'. 
+
+Reflection:
+Passed all tests on the second attempt which I'm happy with. Was able to quickly find the error in my bug as well which is good. Pretty basic problem with not many advanced techniques but maybe I solved it incorrectly. 
+
+
+#################################
+#     Problem 4 Block Enemy     #
+#################################
+
+Design Ideas:
+This problem seems pretty challenging. I guess the first this we should probably do it extract the inputs and place them in easier to work with data structures. 
+
+I guess in terms of graph theory, what we essentially want is to split the occupied towns into disjoint sets, so that each occupied town is in its own set (for the cheapest price anyway). 
+
+Okay so here is my plan. 
+    Assemble my graph from the input 
+    For every occupied town, 
+        Do a depth first search
+            if we hit another occupied town 
+                remove the cheapest road between these two 
+                start the dfs again 
+            otherwise do nothing and go to next occupied town 
+
+
+New plan. Don't even need to convert the input into a different structure for this approach I think. 
+So we just go through each connection in the input. 
+We check if both of the towns in this connection are occupied, if they are, we add the cost and put them in seperate sets. 
+To begin with, each town is the parent of itself, and 
+
+We can easily remove direct connections between occupied towns. 
+
+Okay new plan.
+Start at an occupied town. Do DFS until you reach another occupied town. Keep track of the path you took to get this is occupied town. 
+Delete the cheapest road between the two towns. 
+Add it to a deleted roads list. 
+Repeat this process for all occupied towns, until DFS returns and there are no occupied towns connected to the main occupied town. During this DFS, if you are about to go down a road that has been deleted, do not go down that road. 
+Return the cost of all the deleted roads. 
+
+Reflection:
+Passed on the first upload suprisingly. That took a really really long time. More time than all the previous problems combined. I think I hate graph problems now. A really hard but interesting problem. 
+What I find interesting about this problem is that it's easy to see the solution just by looking at the graph, but then when you actually try to code the solution, it gets very confusing very quickly. 
+I found myself bouncing around the code, jupming to different segments when something happens here or something else happens there. Just happy to be done with that problem. 
+
+
+
+#################################
+#       Weekly Reflection       #
+#################################
+
+Think I passed all the problems on the first or second upload this week which is pretty good. Really struggled very badly with the last graph problem and I absolutely need to get better at these types of problems if I want to do well in this last prac exam. 
+Question 1 was fine and I was pretty happy with my idea to 'slide' A across B. 
+Question 2 was pretty simple and just by writing down an example on paper it became pretty clear what we had to do to solve this. 
+Question 3 was also pretty easy and just required some switch cases and nothing fancy. 
